@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 
 public class Employees {
 
+        public Employees(){
 
+        }
 
         private int id;
         private String name;
@@ -13,6 +15,16 @@ public class Employees {
         private String phone;
         private String note;
         private BigDecimal hourlyPayment;
+
+        public Employees(String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
+
+                this.name = name;
+                this.lastName = lastName;
+                this.address = address;
+                this.phone = phone;
+                this.note = note;
+                this.hourlyPayment = hourlyPayment;
+        }
 
         public int getId() {
             return id;

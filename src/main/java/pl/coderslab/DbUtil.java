@@ -9,15 +9,20 @@ import java.sql.SQLException;
 
 public class DbUtil {
     private static DataSource ds;
+
     public static Connection getConn() throws SQLException {
         return getInstance().getConnection();
     }
+
     private static DataSource getInstance() {
-        if(ds == null) {
+        if (ds == null) {
             try {
                 Context ctx = new InitialContext();
-                ds = (DataSource)ctx.lookup("java:comp/env/jdbc/crm");
+                ds = (DataSource) ctx.lookup("java:comp/env/jdbc/school");
             } catch (NamingException e) {
-                e.printStackTrace();}}
-        return ds;}
+                e.printStackTrace();
+            }
+        }
+        return ds;
+    }
 }

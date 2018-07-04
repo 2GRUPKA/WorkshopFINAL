@@ -17,6 +17,9 @@ public class Orders {
     private BigDecimal repairCost;
     private BigDecimal partCost;
 
+    public Orders() {
+    }
+
     @Override
     public String toString() {
         return "Orders{" +

@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: dominik
+  User: kuba
   Date: 04.07.18
   Time: 11:43
   To change this template use File | Settings | File Templates.
@@ -12,9 +12,8 @@
 </head>
 <body>
 <p>Panel employee</p>
-<a href="/addEmployee"><button>Add employee</button>    </a>
-<a href="/employeeDelete"><button> Delete employee </button>  </a>
-<a href="/employeeList"> <button>List employees</button></a>
+<a href="/addOrder"><button>Add order</button>    </a>
+<a href="/deleteOrder"><button> Delete order </button>  </a>
 
 
 </body>

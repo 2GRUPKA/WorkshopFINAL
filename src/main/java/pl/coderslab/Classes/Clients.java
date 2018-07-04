@@ -1,10 +1,23 @@
 package pl.coderslab.Classes;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Clients {
 
     private int id;
+    private String name;
+    private String lastName;
+    private Date birthDate;
+
+    public Clients(){
+
+    }
+
+    public Clients(String name, String lastName, Date birthDate) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
 
     public int getId() {
         return id;
@@ -38,8 +51,5 @@ public class Clients {
         this.birthDate = birthDate;
     }
 
-    private String name;
-    private String lastName;
-    private Date birthDate;
 
 }

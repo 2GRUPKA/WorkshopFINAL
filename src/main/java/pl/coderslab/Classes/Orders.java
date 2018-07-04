@@ -17,6 +17,12 @@ public class Orders {
     private BigDecimal repairCost;
     private BigDecimal partCost;
 
+<<<<<<< HEAD
+=======
+    public Orders() {
+    }
+
+>>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
     @Override
     public String toString() {
         return "Orders{" +

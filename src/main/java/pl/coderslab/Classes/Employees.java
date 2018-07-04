@@ -18,15 +18,13 @@ public class Employees {
 
         @Override
         public String toString() {
-                return "Employees{" +
-                        "id=" + id +
+                return "id=" + id +
                         ", name='" + name + '\'' +
                         ", lastName='" + lastName + '\'' +
                         ", address='" + address + '\'' +
                         ", phone='" + phone + '\'' +
                         ", note='" + note + '\'' +
-                        ", hourlyPayment=" + hourlyPayment +
-                        '}';
+                        ", hourlyPayment=" + hourlyPayment + "<br>  ";
         }
 
         public Employees(String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {

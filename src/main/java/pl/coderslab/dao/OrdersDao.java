@@ -5,8 +5,11 @@ import pl.coderslab.DbUtil;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class OrdersDao extends Orders {
+    public OrdersDao() {
+    }
 
     public OrdersDao(Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
         super(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id, repairCost, partCost, repairHours);
@@ -27,6 +30,38 @@ public class OrdersDao extends Orders {
 
     }
 
+    public static ArrayList<OrdersDao> loadAll() throws SQLException {
+        String sql = "SELECT * FROM orders";
+        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+        return getOrdersFromStatement(stmt);
+    }
+    private static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
+        try {
+            ArrayList<OrdersDao> orderDao = new ArrayList<OrdersDao>();
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                OrdersDao loadedOrder = new OrdersDao();
+
+                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
+                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
+                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
+                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
+                loadedOrder.setStatus(resultSet.getString("status"));
+                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
+                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
+                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                orderDao.add(loadedOrder);
+            }
+            return orderDao;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
     public static OrdersDao loadById(int id){
         try {
             String sql = "SELECT * FROM orders WHERE id=?";
@@ -34,15 +69,20 @@ public class OrdersDao extends Orders {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                EmployeesDao loadedEmployee = new EmployeesDao();
-                loadedEmployee.setId(resultSet.getInt("id"));
-                loadedEmployee.setName(resultSet.getString("name"));
-                loadedEmployee.setLastName(resultSet.getString("lastName"));
-                loadedEmployee.setAddress(resultSet.getString("address"));
-                loadedEmployee.setPhone(resultSet.getString("phone"));
-                loadedEmployee.setNote(resultSet.getString("note"));
-                loadedEmployee.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
-                return loadedEmployee;
+                OrdersDao loadedOrder = new OrdersDao();
+
+                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
+                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
+                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
+                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
+                loadedOrder.setStatus(resultSet.getString("status"));
+                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
+                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
+                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                return loadedOrder;
             }
 
         } catch (SQLException e) {

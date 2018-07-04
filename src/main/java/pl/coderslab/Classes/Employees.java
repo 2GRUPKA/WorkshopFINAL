@@ -16,6 +16,19 @@ public class Employees {
         private String note;
         private BigDecimal hourlyPayment;
 
+        @Override
+        public String toString() {
+                return "Employees{" +
+                        "id=" + id +
+                        ", name='" + name + '\'' +
+                        ", lastName='" + lastName + '\'' +
+                        ", address='" + address + '\'' +
+                        ", phone='" + phone + '\'' +
+                        ", note='" + note + '\'' +
+                        ", hourlyPayment=" + hourlyPayment +
+                        '}';
+        }
+
         public Employees(String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
 
                 this.name = name;

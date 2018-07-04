@@ -5,39 +5,33 @@ import pl.coderslab.Classes.Employees;
 import pl.coderslab.DbUtil;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
-public class EmployeesDAO extends Employees {
+public class EmployeesDao extends Employees {
 
-    public EmployeesDAO(String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
+    public EmployeesDao(String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
         super(name,lastName,address,phone,note,hourlyPayment);
     }
 
-//    public int getId() {
-//        return getId();
-//    }
 
-    @Override
-    public String toString(){
-        return "id: "+this.getId()+" name, surname: "+this.getName()+" "+this.getLastName()+ " address: " + this.getAddress() + " phone:" + this.getPhone() + " note: "
-                + this.getNote() + " hourly payment: " + this.getHourlyPayment();
-    }
+//    @Override
+//    public String toString(){
+//        return "id: " +this.getId()+" name, surname: "+this.getName()+" "+this.getLastName()+ " address: " + this.getAddress() + " phone:" + this.getPhone() + " note: "
+//                + this.getNote() + " hourly payment: " + this.getHourlyPayment();
+//    }
 
 
     // non-static DB methods
     public void saveToDB(){
         if(this.getId()==0){
             try {
+//                Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
                 Connection conn = DbUtil.getConn();
                 String generatedColumns[] = { "id" };
-                System.out.println("Przed stmt");
                 String query = "INSERT INTO employees(name, lastName, address, phone, note, hourlyPayment) VALUES (?,?,?,?,?,?)";
                 PreparedStatement stmt = DbUtil.getConn().prepareStatement(query,generatedColumns);
-                System.out.println("po stmt");
+//                PreparedStatement stmt = connection.prepareStatement(query,generatedColumns);
                 stmt.setString(1, this.getName());
                 stmt.setString(2, this.getLastName());
                 stmt.setString(3, this.getAddress());
@@ -54,7 +48,9 @@ public class EmployeesDAO extends Employees {
             }
         }else{
             try{
+//                Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
                 PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE employees SET name=?, lastName=?, address=?, phone=?, note=?, hourlyPayment=? WHERE id=?");
+//                PreparedStatement stmt = connection.prepareStatement("UPDATE employees SET name=?, lastName=?, address=?, phone=?, note=?, hourlyPayment=? WHERE id=?");
                 stmt.setString(1, this.getName());
                 stmt.setString(2, this.getLastName());
                 stmt.setString(3, this.getAddress());
@@ -72,7 +68,9 @@ public class EmployeesDAO extends Employees {
         String sql = "DELETE FROM employees WHERE id= ?";
         try{
             if(this.getId()!=0){
+//                Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
                 PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+//                PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setLong(1, this.getId());
                 stmt.executeUpdate();
                 setId(0);
@@ -85,17 +83,16 @@ public class EmployeesDAO extends Employees {
 
     public static ArrayList<Employees> loadAll() throws SQLException {
         String sql = "SELECT * FROM employees";
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
         PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-        return getUsersFromStatement(stmt);
+//        PreparedStatement stmt = connection.prepareStatement(sql);
+        return getEmployeesFromStatement(stmt);
     }
-    private static ArrayList<Employees> getUsersFromStatement(PreparedStatement stmt) {
+    private static ArrayList<Employees> getEmployeesFromStatement(PreparedStatement stmt) {
         try {
+//            Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
             ArrayList<Employees> employee = new ArrayList<Employees>();
             ResultSet resultSet = stmt.executeQuery();
-//			resultSet.last();
-//			int size = resultSet.getRow();
-//			resultSet.beforeFirst();
-//			System.out.println("LOG COUNT Result: "+size);
             while (resultSet.next()) {
                 Employees loadedEmployee = new Employees();
                 loadedEmployee.setId(resultSet.getInt("id"));
@@ -116,7 +113,9 @@ public class EmployeesDAO extends Employees {
     public static Employees loadById(int id){
         try {
             String sql = "SELECT * FROM employees WHERE id=?";
+//            Connection connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922", "sql7245922", "KTdz9mTYra");
             PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+//            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {

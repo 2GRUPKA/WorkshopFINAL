@@ -1,8 +1,7 @@
 package pl.coderslab;
 
-import pl.coderslab.dao.EmployeesDAO;
+import pl.coderslab.dao.EmployeesDao;
 
-import java.math.BigDecimal;
 import java.sql.*;
 
 
@@ -26,14 +25,18 @@ public class Testing {
 //    }
 //}
 
-        try {
-            Connection conn = DbUtil.getConn();
-            conn.prepareStatement("SELECT * FROM employees");
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-//        EmployeesDAO jan = new EmployeesDAO("Jeman", "Kojjjwlski", "12jj3123", "123123", "asdasdas", BigDecimal.valueOf(10.2));
+//        try {
+//
+//            DbUtil.getConn().prepareStatement("SELECT * FROM employees");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//
+//        }
+//        EmployeesDao jan = new EmployeesDao("Jeman", "Kojjjwlski", "12jj3123", "123123", "asdasdas", BigDecimal.valueOf(10.2));
 //        jan.saveToDB();
+//        try {
+//            System.out.println(EmployeesDao.loadAll().toString());
+            System.out.println(EmployeesDao.loadById(1).toString());
+//        } catch (SQLException e) { e.printStackTrace();}
     }
 }

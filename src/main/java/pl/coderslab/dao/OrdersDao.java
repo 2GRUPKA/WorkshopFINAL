@@ -43,6 +43,7 @@ public class OrdersDao extends Orders {
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
 
+                loadedOrder.setId(resultSet.getInt("id"));
                  loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
@@ -72,7 +73,7 @@ public class OrdersDao extends Orders {
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
 
-
+                loadedOrder.setId(resultSet.getInt("id"));
                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));

@@ -25,6 +25,7 @@ public class OrdersList extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
+
         //request.getRequestDispatcher("/orderslist.jsp").forward(request, response);
 
         try {

@@ -43,30 +43,30 @@ public class OrdersAdd extends HttpServlet {
            //response.getWriter().append("Added new employee " + acceptanceDateDate, planningStartDateDate, startRepairDate, employtee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
             response.getWriter().append("Added new order " + ordersDao);
 
-        } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new employee!"); }
+        } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new order!"); }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
-        response.getWriter().append("    <form action='' metod=\"post\">\n" +
-                "        <input type='date' name='acceptanceDate' required placeholder=\"date\" />\n" +
-                "        <input type='date' name='planningStartDate' required placeholder=\"planningStartDate\" />\n" +
-                "        <input type='date' name='startRepair' required placeholder=\"startRepair\" />\n" +
-                "        <input type='text' name='employee_id' required placeholder=\"employee_id\" />\n" +
-                "        <input type='text' name='problemDescription' required placeholder=\"problemDescription\" />\n" +
-                "        <input type='text' name='repairDescription' required placeholder=\"repairDescription\" />\n" +
+        response.getWriter().append("    <form action='' metod=\"post\"/>\n" +
+                "        <div><input type='date' name='acceptanceDate' required /></div>\n" +
+                "       <div> <input type='date' name='planningStartDate' required /></div>\n" +
+                "        <div><input type='date' name='startRepair' required /></div>\n" +
+                "        <div><input type='text' name='employee_id' required placeholder=\"employee_id\" /></div>\n" +
+                "        <div><input type='text' name='problemDescription' required placeholder=\"problemDescription\" /></div>\n" +
+                "        <div><input type='text' name='repairDescription' required placeholder=\"repairDescription\" /></div>\n" +
                 "\n" +
-                "        <input type='text' name='status' required placeholder=\"status\" />\n" +
+                "        <div><input type='text' name='status' required placeholder=\"status\" /></div>\n" +
                 "\n" +
-                "        <input type='text' name='vehicle_id' required placeholder=\"vehicle_id\" />\n" +
+                "        <div><input type='text' name='vehicle_id' required placeholder=\"vehicle_id\" /></div>\n" +
                 "\n" +
-                "        <input type='text' name='repairCost' required placeholder=\"repairCost\" />\n" +
+                "        <div><input type='text' name='repairCost' required placeholder=\"repairCost\" /></div>\n" +
                 "\n" +
-                "        <input type='text' name='partCost' required placeholder=\"partCost\" />\n" +
+                "        <div><input type='text' name='partCost' required placeholder=\"partCost\" /></div>\n" +
                 "\n" +
-                "        <input type='text' name='repairHours' required placeholder=\"repairHours\" />\n" +
-                "        <div><input type='submit' value='submit'/>\"\n" +
+                "        <div><input type='text' name='repairHours' required placeholder=\"repairHours\" /></div>\n" +
+                "        <div><div><input type='submit' value='submit'/></div>\"\n" +
                 "\n" +
                 "    </form>");
         //request.getRequestDispatcher("/addorderform.jsp").forward(request, response);

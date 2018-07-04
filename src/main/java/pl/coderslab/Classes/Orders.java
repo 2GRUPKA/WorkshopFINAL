@@ -1,14 +1,14 @@
 package pl.coderslab.Classes;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 public class Orders {
 
     private int id;
     private Date acceptanceDate;
     private Date planningStartDate;
-    private Date startReapir;
+    private Date startRepair;
     private int employee_id;
     private String problemDescription;
     private String repairDescription;
@@ -16,7 +16,40 @@ public class Orders {
     private int vehicle_id;
     private BigDecimal repairCost;
     private BigDecimal partCost;
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", acceptanceDate=" + acceptanceDate +
+                ", planningStartDate=" + planningStartDate +
+                ", startRepair=" + startRepair +
+                ", employee_id=" + employee_id +
+                ", problemDescription='" + problemDescription + '\'' +
+                ", repairDescription='" + repairDescription + '\'' +
+                ", status='" + status + '\'' +
+                ", vehicle_id=" + vehicle_id +
+                ", repairCost=" + repairCost +
+                ", partCost=" + partCost +
+                ", repairHours=" + repairHours +
+                '}';
+    }
+
     private int repairHours;
+
+    public Orders(Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
+        this.acceptanceDate = acceptanceDate;
+        this.planningStartDate = planningStartDate;
+        this.startRepair = startRepair;
+        this.employee_id = employee_id;
+        this.problemDescription = problemDescription;
+        this.repairDescription = repairDescription;
+        this.status = status;
+        this.vehicle_id = vehicle_id;
+        this.repairCost = repairCost;
+        this.partCost = partCost;
+        this.repairHours = repairHours;
+    }
 
     public int getId() {
         return id;
@@ -42,12 +75,12 @@ public class Orders {
         this.planningStartDate = planningStartDate;
     }
 
-    public Date getStartReapir() {
-        return startReapir;
+    public Date getStartRepair() {
+        return startRepair;
     }
 
-    public void setStartReapir(Date startReapir) {
-        this.startReapir = startReapir;
+    public void setStartRepair(Date startRepair) {
+        this.startRepair = startRepair;
     }
 
     public int getEmployee_id() {

@@ -42,7 +42,8 @@ public class OrdersDao extends Orders {
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
-                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+
+                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
                 loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
@@ -70,6 +71,7 @@ public class OrdersDao extends Orders {
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
+
 
                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));

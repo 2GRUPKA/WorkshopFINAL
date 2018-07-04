@@ -15,7 +15,7 @@
 <%@ include file="/fragments/header.jsp"  %>
 
 <div>
-    <form action="" metod="post">
+    <form action="/addOrder" metod="post">
         <div><input type='date' name='acceptanceDate' required/></div>
         <div> <input type='date' name='planningStartDate' required/></div>
 <div> <input type='date' name='startRepair' required/></div>

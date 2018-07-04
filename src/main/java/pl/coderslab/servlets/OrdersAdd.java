@@ -40,7 +40,7 @@ public class OrdersAdd extends HttpServlet {
 
             OrdersDao ordersDao = new OrdersDao(acceptanceDateDate, planningStartDateDate, startRepairDate, employee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
             ordersDao.saveToDB();
-           //response.getWriter().append("Added new employee " + acceptanceDateDate, planningStartDateDate, startRepairDate, employtee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
+            //response.getWriter().append("Added new employee " + acceptanceDateDate, planningStartDateDate, startRepairDate, employtee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
             response.getWriter().append("Added new order " + ordersDao);
 
         } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new order!"); }

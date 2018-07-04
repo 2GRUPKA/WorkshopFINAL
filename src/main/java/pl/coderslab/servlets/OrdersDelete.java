@@ -46,5 +46,4 @@ public class OrdersDelete extends HttpServlet {
                 .append("<input type='number' name='id' min=0 /></label>")
                 .append("</label> <input type='submit' value='submit'/> </form>");
     }
-    }
-
+}

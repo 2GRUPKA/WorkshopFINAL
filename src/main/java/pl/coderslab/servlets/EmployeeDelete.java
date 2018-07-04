@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 @WebServlet(name = "EmployeeDelete", urlPatterns = "/employeeDelete")
@@ -17,7 +19,6 @@ public class EmployeeDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
-//        Scanner scanner = new Scanner(System.in);
         int idInt;
 
         if(!id.isEmpty() && id != null) {
@@ -49,9 +50,17 @@ public class EmployeeDelete extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
+
         try {
-            response.getWriter().append(EmployeesDao.loadAll().toString());
+            ArrayList<EmployeesDao> list = EmployeesDao.loadAll();
+            Iterator<EmployeesDao> it = list.iterator();
+            response.getWriter().append("<ol>");
+            while(it.hasNext()) {
+                response.getWriter().append("<li>"+it.next().toString()+"</li>");
+            }
+            response.getWriter().append("</ol>");
         } catch (SQLException e) {
+            response.getWriter().append("Brak pracowników");
             e.printStackTrace();
         }
         response.getWriter().append("<form method='post' action=''>")

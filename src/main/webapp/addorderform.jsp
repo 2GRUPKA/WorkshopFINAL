@@ -15,23 +15,23 @@
 <%@ include file="/fragments/header.jsp"  %>
 
 <div>
-    <form action='' metod="post">
-        <input type='date' name='acceptanceDate' required placeholder="date" />
-        <input type='date' name='planningStartDate' required placeholder="planningStartDate" />
-        <input type='date' name='startRepair' required placeholder="startRepair" />
-        <input type='text' name='employee_id' required placeholder="employee_id" />
-        <input type='text' name='problemDescription' required placeholder="problemDescription" />
-        <input type='text' name='repairDescription' required placeholder="repairDescription" />
+    <form action="" metod="post">
+        <div><input type='date' name='acceptanceDate' required/></div>
+        <div> <input type='date' name='planningStartDate' required/></div>
+<div> <input type='date' name='startRepair' required/></div>
+<div> <input type='text' name='employee_id' required placeholder="employee_id" /></div>
+<div><input type='text' name='problemDescription' required placeholder="problemDescription" /></div>
+<div><input type='text' name='repairDescription' required placeholder="repairDescription" /></div>
 
-        <input type='text' name='status' required placeholder="status" />
+<div> <input type='text' name='status' required placeholder="status" /></div>
 
-        <input type='text' name='vehicle_id' required placeholder="vehicle_id" />
+<div> <input type='text' name='vehicle_id' required placeholder="vehicle_id" /></div>
 
-        <input type='text' name='repairCost' required placeholder="repairCost" />
+<div> <input type='text' name='repairCost' required placeholder="repairCost" /></div>
 
-        <input type='text' name='partCost' required placeholder="partCost" />
+<div><input type='text' name='partCost' required placeholder="partCost" /></div>
 
-        <input type='text' name='repairHours' required placeholder="repairHours" />
+<div><input type='text' name='repairHours' required placeholder="repairHours" /></div>
         <button>SAVE TO DB</button>
 
     </form>

@@ -11,7 +11,7 @@
     <title>Employee Panel</title>
 </head>
 <body>
-<p>Panel employee</p>
+<p>Panel order</p>
 <a href="/addOrder"><button>Add order</button>    </a>
 <a href="/deleteOrder"><button> Delete order </button>  </a>
 

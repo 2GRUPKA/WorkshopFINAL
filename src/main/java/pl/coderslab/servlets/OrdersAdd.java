@@ -25,23 +25,29 @@ public class OrdersAdd extends HttpServlet {
         String repairCost = request.getParameter("repairCost");
         String partCost = request.getParameter("partCost");
         String repairHours = request.getParameter("repairHours");
-
+        Date acceptanceDateDate, planningStartDateDate, startRepairDate;
+        int employee_idId;
+        int vehicle_idId;
+        double repairCostDouble;
+        BigDecimal repairCostDec;
+        double partCostDouble;
+        BigDecimal partCostCostDec;
+        int repairHoursHours;
         try {
-            Date acceptanceDateDate = Date.valueOf(acceptanceDate);
-            Date planningStartDateDate = Date.valueOf(planningStartDate);
-            Date startRepairDate = Date.valueOf(startRepair);
-            int employee_idId = Integer.parseInt(employee_id);
-            int vehicle_idId = Integer.parseInt(vehicle_id);
-            double repairCostDouble = Double.parseDouble(repairCost);
-            BigDecimal repairCostDec = BigDecimal.valueOf(repairCostDouble);
-            double partCostDouble = Double.parseDouble(partCost);
-            BigDecimal partCostCostDec = BigDecimal.valueOf(partCostDouble);
-            int repairHoursHours = Integer.parseInt(repairHours);
+            acceptanceDateDate = Date.valueOf(acceptanceDate);
+            planningStartDateDate = Date.valueOf(planningStartDate);
+            startRepairDate = Date.valueOf(startRepair);
+            employee_idId = Integer.parseInt(employee_id);
+            vehicle_idId = Integer.parseInt(vehicle_id);
+            repairCostDouble = Double.parseDouble(repairCost);
+            repairCostDec = BigDecimal.valueOf(repairCostDouble);
+            partCostDouble = Double.parseDouble(partCost);
+            partCostCostDec = BigDecimal.valueOf(partCostDouble);
+            repairHoursHours = Integer.parseInt(repairHours);
 
             OrdersDao ordersDao = new OrdersDao(acceptanceDateDate, planningStartDateDate, startRepairDate, employee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
             ordersDao.saveToDB();
-            //response.getWriter().append("Added new employee " + acceptanceDateDate, planningStartDateDate, startRepairDate, employtee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
-            response.getWriter().append("Added new order " + ordersDao);
+            response.getWriter().append("Added new order " + problemDescription);
 
         } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new order!"); }
 
@@ -49,26 +55,6 @@ public class OrdersAdd extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
-        response.getWriter().append("    <form action='' metod=\"post\"/>\n" +
-                "        <div><input type='date' name='acceptanceDate' required /></div>\n" +
-                "       <div> <input type='date' name='planningStartDate' required /></div>\n" +
-                "        <div><input type='date' name='startRepair' required /></div>\n" +
-                "        <div><input type='text' name='employee_id' required placeholder=\"employee_id\" /></div>\n" +
-                "        <div><input type='text' name='problemDescription' required placeholder=\"problemDescription\" /></div>\n" +
-                "        <div><input type='text' name='repairDescription' required placeholder=\"repairDescription\" /></div>\n" +
-                "\n" +
-                "        <div><input type='text' name='status' required placeholder=\"status\" /></div>\n" +
-                "\n" +
-                "        <div><input type='text' name='vehicle_id' required placeholder=\"vehicle_id\" /></div>\n" +
-                "\n" +
-                "        <div><input type='text' name='repairCost' required placeholder=\"repairCost\" /></div>\n" +
-                "\n" +
-                "        <div><input type='text' name='partCost' required placeholder=\"partCost\" /></div>\n" +
-                "\n" +
-                "        <div><input type='text' name='repairHours' required placeholder=\"repairHours\" /></div>\n" +
-                "        <div><div><input type='submit' value='submit'/></div>\"\n" +
-                "\n" +
-                "    </form>");
-        //request.getRequestDispatcher("/addorderform.jsp").forward(request, response);
+        request.getRequestDispatcher("/addorderform.jsp").forward(request, response);
     }
 }

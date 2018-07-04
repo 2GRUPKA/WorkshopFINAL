@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-@WebServlet(name = "AddEmployee", urlPatterns = "/addEmployee")
-public class AddEmployee extends HttpServlet {
+@WebServlet(name = "EmployeeAdd", urlPatterns = "/addEmployee")
+public class EmployeeAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
@@ -28,8 +28,11 @@ public class AddEmployee extends HttpServlet {
             hourlyPaymentDecimal = BigDecimal.valueOf(hourlyPaymentDouble);
             EmployeesDao employeesDao = new EmployeesDao(name,lastName,address,phone,note,hourlyPaymentDecimal);
             employeesDao.saveToDB();
+            response.getWriter().append("Added new employee " + name +" "+lastName);
 
-        } catch (Exception e) { e.printStackTrace(); }
+
+        } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new employee!"); }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

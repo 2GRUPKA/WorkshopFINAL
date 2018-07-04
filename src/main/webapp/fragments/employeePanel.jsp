@@ -13,5 +13,9 @@
 <body>
 <p>Panel employee</p>
 <a href="/addEmployee"> Add employee </a>
+<a href="/employeeDelete"> Delete employee </a>
+<a href="/employeeList"> List employees </a>
+
+
 </body>
 </html>

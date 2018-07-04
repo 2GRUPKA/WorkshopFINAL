@@ -12,9 +12,9 @@
 </head>
 <body>
 <p>Panel employee</p>
-<a href="/addEmployee">  Add employee  </a>
-<a href="/employeeDelete">  Delete employee  </a>
-<a href="/employeeList">  List employees  </a>
+<button><a href="/addEmployee">  Add employee  </a></button>
+<button><a href="/employeeDelete">  Delete employee  </a></button>
+<button><a href="/employeeList">  List employees  </a></button>
 
 
 </body>

@@ -9,158 +9,158 @@ import java.sql.*;
 
 public class OrdersDao extends Orders {
 =======
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
-public class OrdersDao extends Orders {
-    public OrdersDao() {
-    }
+    public class OrdersDao extends Orders {
+        public OrdersDao() {
+        }
 >>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
 
-    public OrdersDao(Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
-        super(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id, repairCost, partCost, repairHours);
-    }
-
-    public void delete(){
-        String sql = "DELETE FROM orders WHERE id= ?";
-        try{
-            if(this.getId()!=0){
-                PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-                stmt.setLong(1, this.getId());
-                stmt.executeUpdate();
-                setId(0);
-            }
-        }catch (SQLException e) {
-            System.err.println(e.getMessage());
+        public OrdersDao(Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
+            super(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id, repairCost, partCost, repairHours);
         }
 
-    }
-
-<<<<<<< HEAD
-=======
-    public static ArrayList<OrdersDao> loadAll() throws SQLException {
-        String sql = "SELECT * FROM orders";
-        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-        return getOrdersFromStatement(stmt);
-    }
-    private static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
-        try {
-            ArrayList<OrdersDao> orderDao = new ArrayList<OrdersDao>();
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-                OrdersDao loadedOrder = new OrdersDao();
-
-                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
-                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
-                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
-                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
-                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
-                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
-                loadedOrder.setStatus(resultSet.getString("status"));
-                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
-                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
-                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
-                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
-                orderDao.add(loadedOrder);
-            }
-            return orderDao;
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        return null;
-    }
-
->>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
-    public static OrdersDao loadById(int id){
-        try {
-            String sql = "SELECT * FROM orders WHERE id=?";
-            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-            stmt.setInt(1, id);
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-<<<<<<< HEAD
-                EmployeesDao loadedEmployee = new EmployeesDao();
-                loadedEmployee.setId(resultSet.getInt("id"));
-                loadedEmployee.setName(resultSet.getString("name"));
-                loadedEmployee.setLastName(resultSet.getString("lastName"));
-                loadedEmployee.setAddress(resultSet.getString("address"));
-                loadedEmployee.setPhone(resultSet.getString("phone"));
-                loadedEmployee.setNote(resultSet.getString("note"));
-                loadedEmployee.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
-                return loadedEmployee;
-=======
-                OrdersDao loadedOrder = new OrdersDao();
-
-                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
-                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
-                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
-                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
-                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
-                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
-                loadedOrder.setStatus(resultSet.getString("status"));
-                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
-                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
-                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
-                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
-                return loadedOrder;
->>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
-            }
-
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-
-        return null;
-    }
-
-    public void saveToDB() {
-        if (this.getId() == 0) {
-            try {
-                Connection conn = DbUtil.getConn();
-                String generatedColumns[] = {"ID"};
-                PreparedStatement stmt = DbUtil.getConn().prepareStatement("INSERT INTO orders(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id,repairCost, partCost, repairHours) " +
-                        "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", generatedColumns);
-                stmt.setDate(1, this.getAcceptanceDate());
-                stmt.setDate(2, this.getPlanningStartDate());
-                stmt.setDate(3, this.getStartRepair());
-                stmt.setInt(4, this.getEmployee_id());
-                stmt.setString(5, this.getProblemDescription());
-                stmt.setString(6, this.getRepairDescription());
-                stmt.setString(7, this.getStatus());
-                stmt.setInt(8, this.getVehicle_id());
-                stmt.setBigDecimal(9, this.getRepairCost());
-                stmt.setBigDecimal(10, getPartCost());
-                stmt.setInt(11, this.getRepairHours());
-                stmt.executeUpdate();
-                ResultSet rs = stmt.getGeneratedKeys();
-                if (rs.next()) {
-                    this.setId(rs.getInt(1));
+        public void delete(){
+            String sql = "DELETE FROM orders WHERE id= ?";
+            try{
+                if(this.getId()!=0){
+                    PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+                    stmt.setLong(1, this.getId());
+                    stmt.executeUpdate();
+                    setId(0);
                 }
+            }catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+
+        }
+
+<<<<<<< HEAD
+=======
+        public static ArrayList<OrdersDao> loadAll() throws SQLException {
+            String sql = "SELECT * FROM orders";
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+            return getOrdersFromStatement(stmt);
+        }
+        private static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
+            try {
+                ArrayList<OrdersDao> orderDao = new ArrayList<OrdersDao>();
+                ResultSet resultSet = stmt.executeQuery();
+                while (resultSet.next()) {
+                    OrdersDao loadedOrder = new OrdersDao();
+
+                    loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                    loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
+                    loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
+                    loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+                    loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
+                    loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
+                    loadedOrder.setStatus(resultSet.getString("status"));
+                    loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+                    loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
+                    loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
+                    loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                    orderDao.add(loadedOrder);
+                }
+                return orderDao;
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
-        } else {
+            return null;
+        }
+
+>>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
+        public static OrdersDao loadById(int id){
             try {
-                PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = ?, planningStartDate = ?, startRepair = ?, employee_id = ?, problemDescription = ?, repairDescription = ?, status = ?, vehicle_id = ?,repairCost = ?, partCost = ?, repairHours = ? " +
-                        "WHERE id = ?");
-                stmt.setDate(1, this.getAcceptanceDate());
-                stmt.setDate(2, this.getPlanningStartDate());
-                stmt.setDate(3, this.getStartRepair());
-                stmt.setInt(4, this.getEmployee_id());
-                stmt.setString(5, this.getProblemDescription());
-                stmt.setString(6, this.getRepairDescription());
-                stmt.setString(7, this.getStatus());
-                stmt.setInt(8, this.getVehicle_id());
-                stmt.setBigDecimal(9, this.getRepairCost());
-                stmt.setBigDecimal(10, this.getPartCost());
-                stmt.setInt(11, this.getRepairHours());
-                stmt.setInt(12, this.getId());
-                stmt.executeUpdate();
+                String sql = "SELECT * FROM orders WHERE id=?";
+                PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+                stmt.setInt(1, id);
+                ResultSet resultSet = stmt.executeQuery();
+                while (resultSet.next()) {
+<<<<<<< HEAD
+                    EmployeesDao loadedEmployee = new EmployeesDao();
+                    loadedEmployee.setId(resultSet.getInt("id"));
+                    loadedEmployee.setName(resultSet.getString("name"));
+                    loadedEmployee.setLastName(resultSet.getString("lastName"));
+                    loadedEmployee.setAddress(resultSet.getString("address"));
+                    loadedEmployee.setPhone(resultSet.getString("phone"));
+                    loadedEmployee.setNote(resultSet.getString("note"));
+                    loadedEmployee.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
+                    return loadedEmployee;
+=======
+                    OrdersDao loadedOrder = new OrdersDao();
+
+                    loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                    loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
+                    loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
+                    loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+                    loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
+                    loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
+                    loadedOrder.setStatus(resultSet.getString("status"));
+                    loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+                    loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
+                    loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
+                    loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                    return loadedOrder;
+>>>>>>> d31d20df4dc331cb9ae22cfb787073b6e87506e7
+                }
+
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
+            }
+
+            return null;
+        }
+
+        public void saveToDB() {
+            if (this.getId() == 0) {
+                try {
+                    Connection conn = DbUtil.getConn();
+                    String generatedColumns[] = {"ID"};
+                    PreparedStatement stmt = DbUtil.getConn().prepareStatement("INSERT INTO orders(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id,repairCost, partCost, repairHours) " +
+                            "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", generatedColumns);
+                    stmt.setDate(1, this.getAcceptanceDate());
+                    stmt.setDate(2, this.getPlanningStartDate());
+                    stmt.setDate(3, this.getStartRepair());
+                    stmt.setInt(4, this.getEmployee_id());
+                    stmt.setString(5, this.getProblemDescription());
+                    stmt.setString(6, this.getRepairDescription());
+                    stmt.setString(7, this.getStatus());
+                    stmt.setInt(8, this.getVehicle_id());
+                    stmt.setBigDecimal(9, this.getRepairCost());
+                    stmt.setBigDecimal(10, getPartCost());
+                    stmt.setInt(11, this.getRepairHours());
+                    stmt.executeUpdate();
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        this.setId(rs.getInt(1));
+                    }
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            } else {
+                try {
+                    PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = ?, planningStartDate = ?, startRepair = ?, employee_id = ?, problemDescription = ?, repairDescription = ?, status = ?, vehicle_id = ?,repairCost = ?, partCost = ?, repairHours = ? " +
+                            "WHERE id = ?");
+                    stmt.setDate(1, this.getAcceptanceDate());
+                    stmt.setDate(2, this.getPlanningStartDate());
+                    stmt.setDate(3, this.getStartRepair());
+                    stmt.setInt(4, this.getEmployee_id());
+                    stmt.setString(5, this.getProblemDescription());
+                    stmt.setString(6, this.getRepairDescription());
+                    stmt.setString(7, this.getStatus());
+                    stmt.setInt(8, this.getVehicle_id());
+                    stmt.setBigDecimal(9, this.getRepairCost());
+                    stmt.setBigDecimal(10, this.getPartCost());
+                    stmt.setInt(11, this.getRepairHours());
+                    stmt.setInt(12, this.getId());
+                    stmt.executeUpdate();
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
             }
         }
     }
-}
 //    public void delete(){
 //        String sql = "DELETE FROM excercise WHERE id= ?";
 //        try{

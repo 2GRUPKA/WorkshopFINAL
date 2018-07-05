@@ -43,7 +43,8 @@ public class OrdersDao extends Orders {
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
 
-                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                loadedOrder.setId(resultSet.getInt("id"));
+                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
                 loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
@@ -72,6 +73,7 @@ public class OrdersDao extends Orders {
             while (resultSet.next()) {
                 OrdersDao loadedOrder = new OrdersDao();
 
+                loadedOrder.setId(resultSet.getInt("id"));
                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
@@ -97,8 +99,9 @@ public class OrdersDao extends Orders {
         if (this.getId() == 0) {
             try {
                 Connection conn = DbUtil.getConn();
-                String generatedColumns[] = {"ID"};
-                PreparedStatement stmt = DbUtil.getConn().prepareStatement("INSERT INTO orders(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id,repairCost, partCost, repairHours) " +
+                String generatedColumns[] = {"id"};
+                PreparedStatement stmt = DbUtil.getConn().prepareStatement("INSERT INTO orders(" +
+                        "acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id,repairCost, partCost, repairHours) " +
                         "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", generatedColumns);
                 stmt.setDate(1, this.getAcceptanceDate());
                 stmt.setDate(2, this.getPlanningStartDate());
@@ -117,29 +120,31 @@ public class OrdersDao extends Orders {
                     this.setId(rs.getInt(1));
                 }
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        } else {
-            try {
-                PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = ?, planningStartDate = ?, startRepair = ?, employee_id = ?, problemDescription = ?, repairDescription = ?, status = ?, vehicle_id = ?,repairCost = ?, partCost = ?, repairHours = ? " +
-                        "WHERE id = ?");
-                stmt.setDate(1, this.getAcceptanceDate());
-                stmt.setDate(2, this.getPlanningStartDate());
-                stmt.setDate(3, this.getStartRepair());
-                stmt.setInt(4, this.getEmployee_id());
-                stmt.setString(5, this.getProblemDescription());
-                stmt.setString(6, this.getRepairDescription());
-                stmt.setString(7, this.getStatus());
-                stmt.setInt(8, this.getVehicle_id());
-                stmt.setBigDecimal(9, this.getRepairCost());
-                stmt.setBigDecimal(10, this.getPartCost());
-                stmt.setInt(11, this.getRepairHours());
-                stmt.setInt(12, this.getId());
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
+                //System.err.println(e.getMessage("Error could not save order");
+                System.out.println("Error could not save order");
             }
         }
+//        else {
+//            try {
+//                PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = ?, planningStartDate = ?, startRepair = ?, employee_id = ?, problemDescription = ?, repairDescription = ?, status = ?, vehicle_id = ?,repairCost = ?, partCost = ?, repairHours = ? " +
+//                        "WHERE id = ?");
+//                stmt.setDate(1, this.getAcceptanceDate());
+//                stmt.setDate(2, this.getPlanningStartDate());
+//                stmt.setDate(3, this.getStartRepair());
+//                stmt.setInt(4, this.getEmployee_id());
+//                stmt.setString(5, this.getProblemDescription());
+//                stmt.setString(6, this.getRepairDescription());
+//                stmt.setString(7, this.getStatus());
+//                stmt.setInt(8, this.getVehicle_id());
+//                stmt.setBigDecimal(9, this.getRepairCost());
+//                stmt.setBigDecimal(10, this.getPartCost());
+//                stmt.setInt(11, this.getRepairHours());
+//                stmt.setInt(12, this.getId());
+//                stmt.executeUpdate();
+//            } catch (SQLException e) {
+//                System.err.println(e.getMessage());
+//            }
+//        }
     }
 }
 //    public void delete(){

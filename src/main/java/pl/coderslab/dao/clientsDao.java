@@ -83,8 +83,7 @@ public class clientsDao extends Clients {
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 clientsDao loadedClient = new clientsDao();
-                loadedClient.setId(resultSet.getInt("id"));
-                loadedClient.setName(resultSet.getString("name"));
+dd                loadedClient.setName(resultSet.getString("name"));
                 loadedClient.setLastName(resultSet.getString("lastName"));
                 loadedClient.setBirthDate(resultSet.getDate("birthDate"));
                 client.add(loadedClient);

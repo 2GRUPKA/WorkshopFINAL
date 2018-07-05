@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jakub
@@ -16,15 +15,14 @@
 <%@ include file="/fragments/header.jsp"  %>
 
 <div>
-<ul>
+    <form action="" method="post">
+        <div> <input type='text' name='id' required placeholder="id" /></div>
 
-    <c:forEach var="current_order" items="${listao}">
-        <li>
-            <h3>id: ${current_order.getId()}, repair description: ${current_order.getRepairDescription()}, status: ${current_order.getStatus()}</h3>
+        <div> <input type='text' name='status' required placeholder="status" /></div>
 
-        </li>
-    </c:forEach>
-</ul>
+        <button>SAVE TO DB</button>
+
+    </form>
 
 </div>
 

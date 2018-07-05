@@ -18,6 +18,10 @@ public class OrdersDao extends Orders {
     public OrdersDao(int id, Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
         super(id, acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id, repairCost, partCost, repairHours);
     }
+    public OrdersDao(int id, String status) {
+        super(id, status);
+    }
+
 
     public void delete() {
         String sql = "DELETE FROM orders WHERE id= ?";
@@ -169,6 +173,20 @@ public class OrdersDao extends Orders {
             stmt.setBigDecimal(10, this.getPartCost());
             stmt.setInt(11, this.getRepairHours());
             stmt.setInt(12, this.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error! Could not complete the edit request");
+        }
+    }
+    public void editStatus() {
+        try {
+            Connection conn = DbUtil.getConn();
+            String Columns[] = {"id"};
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET status = ?" +
+                    "WHERE id = ?");
+            stmt.setString(1, this.getStatus());
+            stmt.setInt(2, this.getId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {

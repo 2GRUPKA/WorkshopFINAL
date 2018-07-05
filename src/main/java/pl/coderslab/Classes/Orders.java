@@ -10,6 +10,12 @@ public class Orders {
     private Date planningStartDate;
     private Date startRepair;
     private int employee_id;
+
+    public Orders(int id, String status) {
+        this.id = id;
+        this.status = status;
+    }
+
     private String problemDescription;
     private String repairDescription;
 

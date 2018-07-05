@@ -38,7 +38,7 @@ public class AddClient extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        request.getRequestDispatcher("/clients.jsp").forward(request, response);
+        request.getRequestDispatcher("/clients/clients.jsp").forward(request, response);
 
 
     }

@@ -31,7 +31,7 @@
 </div>
 <div>
     <form action="/deleteOrder" method="post">
-      id order to delete <div><input type='text' name='idtodelete' required/></div>
+      id order to delete <div><input type='number' name='idtodelete' min=0 /></div>
         <button>Delete</button>
 
     </form>

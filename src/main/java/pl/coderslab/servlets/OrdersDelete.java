@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "OrdersDelete", urlPatterns = "/deleteOrder")
 public class OrdersDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+        String id = request.getParameter("idtodelete");
         int idInt;
         if(!id.isEmpty() && id != null) {
             try {
@@ -24,23 +25,32 @@ public class OrdersDelete extends HttpServlet {
                 OrdersDao ordersDao = new OrdersDao();
                 ordersDao = OrdersDao.loadById(idInt);
                 ordersDao.delete();
-                response.getWriter().append("You deleted order with id: " + id);
+                request.setAttribute("id", id);
+                response.sendRedirect("/deletedOrder.jsp?id="+id);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            response.getWriter().append("Nie wpisano poprawnego id");
+            response.getWriter().append("Wrong id");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html; charset=utf-8;");
+//        try {
+//            response.getWriter().append(OrdersDao.loadAll().toString());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         try {
-            response.getWriter().append(OrdersDao.loadAll().toString());
+            ArrayList<OrdersDao> listao = OrdersDao.loadAll();
+            request.setAttribute("listao", listao);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        request.getRequestDispatcher("/deleteorderform.jsp").forward(request, response);
+
 
     }
 }

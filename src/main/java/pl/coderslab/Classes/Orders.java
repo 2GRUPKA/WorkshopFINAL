@@ -12,6 +12,22 @@ public class Orders {
     private int employee_id;
     private String problemDescription;
     private String repairDescription;
+
+    public Orders(int id, Date acceptanceDate, Date planningStartDate, Date startRepair, int employee_id, String problemDescription, String repairDescription, String status, int vehicle_id, BigDecimal repairCost, BigDecimal partCost, int repairHours) {
+        this.id = id;
+        this.acceptanceDate = acceptanceDate;
+        this.planningStartDate = planningStartDate;
+        this.startRepair = startRepair;
+        this.employee_id = employee_id;
+        this.problemDescription = problemDescription;
+        this.repairDescription = repairDescription;
+        this.status = status;
+        this.vehicle_id = vehicle_id;
+        this.repairCost = repairCost;
+        this.partCost = partCost;
+        this.repairHours = repairHours;
+    }
+
     private String status;
     private int vehicle_id;
     private BigDecimal repairCost;

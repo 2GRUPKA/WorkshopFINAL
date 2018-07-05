@@ -16,28 +16,19 @@ import java.util.Iterator;
 @WebServlet(name = "OrdersList", urlPatterns = "/OrdersList")
 public class OrdersList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        try {
-//            ArrayList<OrdersDao> listao = OrdersDao.loadAll();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
 
-        //request.getRequestDispatcher("/orderslist.jsp").forward(request, response);
-
         try {
-            ArrayList<OrdersDao> list = OrdersDao.loadAll();
-            Iterator<OrdersDao> it = list.iterator();
-            response.getWriter().append("<ol>");
-            while(it.hasNext()) {
-                response.getWriter().append("<li>"+it.next().toString()+"</li>");
-            }
-            response.getWriter().append("</ol>");
+            ArrayList<OrdersDao> listao = OrdersDao.loadAll();
+            request.setAttribute("listao", listao);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        request.getRequestDispatcher("/orderslist.jsp").forward(request, response);
+
     }
 }

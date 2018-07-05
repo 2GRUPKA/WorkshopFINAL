@@ -15,12 +15,17 @@
 <%@ include file="/fragments/header.jsp"  %>
 
 <div>
-    <form action="/addOrder" metod="post">
+    <form action="" method="post">
         <div><input type='date' name='acceptanceDate' required/></div>
+
         <div> <input type='date' name='planningStartDate' required/></div>
+
 <div> <input type='date' name='startRepair' required/></div>
+
 <div> <input type='text' name='employee_id' required placeholder="employee_id" /></div>
+
 <div><input type='text' name='problemDescription' required placeholder="problemDescription" /></div>
+
 <div><input type='text' name='repairDescription' required placeholder="repairDescription" /></div>
 
 <div> <input type='text' name='status' required placeholder="status" /></div>

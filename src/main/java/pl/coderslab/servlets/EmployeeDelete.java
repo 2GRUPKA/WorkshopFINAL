@@ -17,7 +17,8 @@ import java.util.Scanner;
 @WebServlet(name = "EmployeeDelete", urlPatterns = "/employeeDelete")
 public class EmployeeDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("text/html; charset=utf-8;");
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         int idInt;
 
@@ -49,23 +50,20 @@ public class EmployeeDelete extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=utf-8;");
 
-        try {
-            ArrayList<EmployeesDao> list = EmployeesDao.loadAll();
-            Iterator<EmployeesDao> it = list.iterator();
-            response.getWriter().append("<ol>");
-            while(it.hasNext()) {
-                response.getWriter().append("<li>"+it.next().toString()+"</li>");
-            }
-            response.getWriter().append("</ol>");
-        } catch (SQLException e) {
-            response.getWriter().append("Brak pracowników");
-            e.printStackTrace();
-        }
-        response.getWriter().append("<form method='post' action=''>")
-                    .append("<div> <label> Type id employee to delete </div>")
-                    .append("<input type='number' name='id' min=0 /></label>")
-                    .append("</label> <input type='submit' value='submit'/> </form>");
+//        try {
+//            ArrayList<EmployeesDao> list = EmployeesDao.loadAll();
+//            Iterator<EmployeesDao> it = list.iterator();
+//            response.getWriter().append("<ol>");
+//            while(it.hasNext()) {
+//                response.getWriter().append("<li>"+it.next().toString()+"</li>");
+//            }
+//            response.getWriter().append("</ol>");
+//        } catch (SQLException e) {
+//            response.getWriter().append("Brak pracowników");
+//            e.printStackTrace();
+//        }
+        request.getRequestDispatcher("/employees/delete.jsp").forward(request, response);
+
     }
 }

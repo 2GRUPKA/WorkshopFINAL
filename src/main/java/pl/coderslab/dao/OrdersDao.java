@@ -16,16 +16,16 @@ public class OrdersDao extends Orders {
         super(acceptanceDate, planningStartDate, startRepair, employee_id, problemDescription, repairDescription, status, vehicle_id, repairCost, partCost, repairHours);
     }
 
-    public void delete(){
+    public void delete() {
         String sql = "DELETE FROM orders WHERE id= ?";
-        try{
-            if(this.getId()!=0){
+        try {
+            if (this.getId() != 0) {
                 PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
                 stmt.setLong(1, this.getId());
                 stmt.executeUpdate();
                 setId(0);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
 
@@ -36,6 +36,7 @@ public class OrdersDao extends Orders {
         PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
         return getOrdersFromStatement(stmt);
     }
+
     private static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
         try {
             ArrayList<OrdersDao> orderDao = new ArrayList<OrdersDao>();
@@ -44,7 +45,7 @@ public class OrdersDao extends Orders {
                 OrdersDao loadedOrder = new OrdersDao();
 
                 loadedOrder.setId(resultSet.getInt("id"));
-                 loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
                 loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
                 loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
                 loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
@@ -54,7 +55,7 @@ public class OrdersDao extends Orders {
                 loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
                 loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
                 loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
-                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                loadedOrder.setRepairHours(resultSet.getInt("repairHours"));
                 orderDao.add(loadedOrder);
             }
             return orderDao;
@@ -64,7 +65,7 @@ public class OrdersDao extends Orders {
         return null;
     }
 
-    public static OrdersDao loadById(int id){
+    public static OrdersDao loadById(int id) {
         try {
             String sql = "SELECT * FROM orders WHERE id=?";
             PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
@@ -84,7 +85,7 @@ public class OrdersDao extends Orders {
                 loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
                 loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
                 loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
-                loadedOrder.setRepairHours(resultSet.getInt ("repairHours"));
+                loadedOrder.setRepairHours(resultSet.getInt("repairHours"));
                 return loadedOrder;
             }
 
@@ -124,6 +125,8 @@ public class OrdersDao extends Orders {
                 System.out.println("Error could not save order");
             }
         }
+    }
+}
 //        else {
 //            try {
 //                PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = ?, planningStartDate = ?, startRepair = ?, employee_id = ?, problemDescription = ?, repairDescription = ?, status = ?, vehicle_id = ?,repairCost = ?, partCost = ?, repairHours = ? " +
@@ -145,8 +148,8 @@ public class OrdersDao extends Orders {
 //                System.err.println(e.getMessage());
 //            }
 //        }
-    }
-}
+//    }
+//}
 //    public void delete(){
 //        String sql = "DELETE FROM excercise WHERE id= ?";
 //        try{

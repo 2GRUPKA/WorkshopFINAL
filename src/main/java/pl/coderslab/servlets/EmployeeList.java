@@ -15,23 +15,25 @@ import java.util.Iterator;
 @WebServlet(name = "EmployeeList", urlPatterns = "/employeeList")
 public class EmployeeList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("text/html; charset=utf-8;");
+        request.setCharacterEncoding("UTF-8");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8;");
         response.getWriter().append("<h3>List employees in workshop: ");
-
-        try {
-            ArrayList<EmployeesDao> list = EmployeesDao.loadAll();
-            Iterator<EmployeesDao> it = list.iterator();
-            response.getWriter().append("<ol>");
-            while(it.hasNext()) {
-                response.getWriter().append("<li>"+it.next().toString()+"</li>");
-            }
-            response.getWriter().append("</ol>");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        request.getRequestDispatcher("/employees/list.jsp").forward(request, response);
+//
+//        try {
+//            ArrayList<EmployeesDao> list = EmployeesDao.loadAll();
+//            Iterator<EmployeesDao> it = list.iterator();
+//            response.getWriter().append("<ol>");
+//            while(it.hasNext()) {
+//                response.getWriter().append("<li>"+it.next().toString()+"</li>");
+//            }
+//            response.getWriter().append("</ol>");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }

@@ -14,6 +14,9 @@ import java.text.DecimalFormat;
 @WebServlet(name = "EmployeeAdd", urlPatterns = "/addEmployee")
 public class EmployeeAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=utf-8;");
+        request.setCharacterEncoding("UTF-8");
+
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
         String address = request.getParameter("address");
@@ -36,16 +39,8 @@ public class EmployeeAdd extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=utf-8;");
-        response.getWriter().append("<form action='' method='post' />" +
-                "<div><label>Name: <br><input type='text' name='name' required /> </label></div>" +
-                "<div><label>Surname: <br><input type='text' name='lastName' required /> </label></div>" +
-                "<div><label>Address: <br><input type='text' name='address' required /> </label></div>" +
-                "<div><label>Phone number: <br><input type='text' name='phone' required /> </label></div>" +
-                "<div><label>Note about employee: <br><input type='text' name='note' required /> </label></div>" +
-                "<div><label>Hourly payment: <br><input type='number' name='hourlyPayment' min=0 required /> </label></div>" +
-                "<div><input type='submit' value='submit'/>" +
-                "</form>");
+
+        request.getRequestDispatcher("/employees/add.jsp").forward(request, response);
 
 
     }

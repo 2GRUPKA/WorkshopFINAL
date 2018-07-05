@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Date;
+
+import pl.coderslab.dao.EmployeesDao;
 import pl.coderslab.dao.clientsDao;
 
 
@@ -22,9 +25,10 @@ public class EditClient extends HttpServlet {
         int id;
         try {
             id = Integer.parseInt(idStr);
-            clientsDao ClientsDao = clientsDao.loadbyId(id);
+            clientsDao ClientsDao = new clientsDao(name,lastName,birthDate);
             ClientsDao.editClients();
             ClientsDao.saveClients();
+            response.getWriter().append("You have successfully edited the client with id: " + id + name + lastName);
 
         } catch (Exception e) {
             response.getWriter().append("Could not edit the client");

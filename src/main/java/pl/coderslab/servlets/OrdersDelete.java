@@ -41,9 +41,6 @@ public class OrdersDelete extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        response.getWriter().append("<form method='post' action=''>")
-                .append("<div> <label> Type id order to delete </div>")
-                .append("<input type='number' name='id' min=0 /></label>")
-                .append("</label> <input type='submit' value='submit'/> </form>");
+
     }
 }

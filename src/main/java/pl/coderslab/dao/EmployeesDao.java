@@ -123,4 +123,20 @@ public class EmployeesDao extends Employees {
 
         return null;
     }
+    public void updateEmployee(int id, String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
+
+        try{
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE employees SET name=?, lastName=?, address=?, phone=?, note=?, hourlyPayment=? WHERE id=?");
+            stmt.setString(1, name);
+            stmt.setString(2, lastName);
+            stmt.setString(3, address);
+            stmt.setString(4, phone);
+            stmt.setString(5, note);
+            stmt.setBigDecimal(6, hourlyPayment);
+            stmt.setInt(7, id);
+            stmt.executeUpdate();
+        }catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }

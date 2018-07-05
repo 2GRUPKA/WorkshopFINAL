@@ -20,7 +20,7 @@
 
     <c:forEach var="current_order" items="${listao}">
         <li>
-            <h3> ${current_order.getRepairDescription()}</h3>
+             ${current_order.getRepairDescription()}
 
         </li>
     </c:forEach>

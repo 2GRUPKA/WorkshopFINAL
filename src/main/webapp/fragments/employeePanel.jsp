@@ -15,6 +15,7 @@
 <a href="/addEmployee"><button>Add employee</button>    </a>
 <a href="/employeeDelete"><button> Delete employee </button>  </a>
 <a href="/employeeList"> <button>List employees</button></a>
+<a href="/employeeEdit"> <button>Edit employee</button></a>
 
 
 </body>

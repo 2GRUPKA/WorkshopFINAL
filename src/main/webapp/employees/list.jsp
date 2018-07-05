@@ -12,18 +12,19 @@
     <title>Title</title>
 </head>
 <body>
-
+<%@ include file="/fragments/header.jsp"  %>
 <div>
     <ul>
-
-        <c:forEach var="current_order" items="${Employees.loadAll().toString}">
+        <h3>List employees:</h3>
+        <c:forEach var="curr_Employee" items="${listEmp}">
             <li>
-                <h3> ${current_order.getRepairDescription()}</h3>
+                <h3> <i>id=</i> ${curr_Employee.getId()}  <i>fullname=</i> ${curr_Employee.getName()} ${curr_Employee.getLastName()}</h3>
 
             </li>
         </c:forEach>
     </ul>
-
 </div>
+
+
 </body>
 </html>

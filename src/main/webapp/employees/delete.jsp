@@ -11,18 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    <ul>
+<%@ include file="/employees/list.jsp"  %>
 
-        <c:forEach var="current_order" items="${}">
-            <li>
-                <h3> ${current_order.getRepairDescription()}</h3>
-
-            </li>
-        </c:forEach>
-    </ul>
-
-</div>
 <form method='post' action=''>
     <div> <label> Type id order to delete </label></div>
     <input type='number' name='id' min=0 />

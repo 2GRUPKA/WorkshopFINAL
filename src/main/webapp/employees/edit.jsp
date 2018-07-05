@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<%@ include file="/fragments/header.jsp"  %>
 <h3> Form to edit employee</h3>
 <form action='' method='post' />
 <div><label>ID: <br><input type="number" name="id" min="0" required/> </label></div>
@@ -22,5 +23,6 @@
 <div><label>Hourly payment: <br><input type='number' name='hourlyPayment' min=0 required /> </label></div>
 <div><input type='submit' value='submit'/> </div>
     </form>
+<%@ include file="/fragments/footer.jsp"  %>
 </body>
 </html>

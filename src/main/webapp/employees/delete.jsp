@@ -12,7 +12,17 @@
 </head>
 <body>
 <%@ include file="/fragments/header.jsp"  %>
-<%@ include file="/employees/list.jsp"  %>
+<div>
+    <ul>
+        <h3>List employees:</h3>
+        <c:forEach var="curr_Employee" items="${listEmp}">
+            <li>
+                <h3> <i>id=</i> ${curr_Employee.getId()}  <i>fullname=</i> ${curr_Employee.getName()} ${curr_Employee.getLastName()}</h3>
+
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 
 <form method='post' action=''>
     <div> <label> Type id order to delete </label></div>

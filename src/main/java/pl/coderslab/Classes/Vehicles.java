@@ -1,14 +1,37 @@
 package pl.coderslab.Classes;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Vehicles {
-
+    private int id;
     private String model;
     private String brand;
     private Date productionYear;
     private String registrationNumber;
     private Date nextRepairDate;
+
+
+    public Vehicles(String model, String brand, Date productionYear, String registrationNumber, Date nextRepairDate) {
+        this.model = model;
+        this.brand = brand;
+        this.productionYear = productionYear;
+        this.registrationNumber = registrationNumber;
+        this.nextRepairDate = nextRepairDate;
+    }
+
+    public Vehicles() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
     public String getModel() {
         return model;

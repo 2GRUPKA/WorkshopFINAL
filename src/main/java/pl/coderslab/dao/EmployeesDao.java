@@ -141,4 +141,26 @@ public class EmployeesDao extends Employees {
             System.err.println(e.getMessage());
         }
     }
+
+    public static EmployeesDao loadOrdersEmployee(int id) {
+        try{
+            String sql = "SELECT employees.name, employees.lastName, employees.address, employees.phone, employees.note, employees.hourlyPayment FROM employees LEFT JOIN orders ON orders.employee_id = employees.id WHERE employee_id = ?";
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet resultSet = stmt.executeQuery();
+            while(resultSet.next()) {
+                EmployeesDao loadedOrder = new EmployeesDao();
+                loadedOrder.setName(resultSet.getString("name"));
+                loadedOrder.setLastName(resultSet.getString("lastName"));
+                loadedOrder.setAddress(resultSet.getString("address"));
+                loadedOrder.setPhone(resultSet.getString("phone"));
+                loadedOrder.setNote(resultSet.getString("note"));
+                loadedOrder.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
+                return loadedOrder;
+            }
+        }catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
 }

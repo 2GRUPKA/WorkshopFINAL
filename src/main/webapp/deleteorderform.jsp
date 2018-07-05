@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jakub
@@ -14,9 +15,24 @@
 
 <%@ include file="/fragments/header.jsp"  %>
 
+
 <div>
-    <form action="" method="post">
-        <div><input type='date' name='acceptanceDate' required/></div>
+    <ul>
+
+        <c:forEach var="current_order" items="${listao}">
+            <li>
+
+                <h3>id: ${current_order.getId()}, repair description: ${current_order.getRepairDescription()}</h3>
+
+            </li>
+        </c:forEach>
+    </ul>
+
+</div>
+<div>
+    <form action="/deleteOrder" method="post">
+      id order to delete <div><input type='text' name='idtodelete' required/></div>
+        <button>Delete</button>
 
     </form>
 

@@ -25,8 +25,8 @@ public class OrdersDelete extends HttpServlet {
                 OrdersDao ordersDao = new OrdersDao();
                 ordersDao = OrdersDao.loadById(idInt);
                 ordersDao.delete();
-                request.setAttribute("id", idInt);
-                response.sendRedirect("/deletedOrder.jsp?id="+idInt);
+                request.setAttribute("id", id);
+                response.sendRedirect("/deletedOrder.jsp?id="+id);
             } catch (Exception e) {
                 e.printStackTrace();
             }

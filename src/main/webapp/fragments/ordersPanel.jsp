@@ -14,7 +14,10 @@
 <p>Panel order</p>
 <a href="/addOrder"><button>Add order</button>    </a>
 <a href="/deleteOrder"><button> Delete order </button>  </a>
+<a href="/editOrder"><button> Edit order</button>  </a>
+<a href="/editOrderStatus"><button> Edit order status</button>  </a>
 <a href="/OrdersList"><button> Orders list </button>  </a>
+
 
 
 

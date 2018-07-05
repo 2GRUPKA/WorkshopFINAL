@@ -38,7 +38,7 @@ public class DeleteClient extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/ClientToDelete.jsp").forward(request, response);
+        request.getRequestDispatcher("clients/ClientToDelete.jsp").forward(request, response);
 
     }
 }

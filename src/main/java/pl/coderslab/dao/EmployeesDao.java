@@ -123,20 +123,44 @@ public class EmployeesDao extends Employees {
 
         return null;
     }
-    public void updateEmployee(int id, String name, String lastName, String address, String phone, String note, BigDecimal hourlyPayment) {
+
+    public void updateEmployee() {
 
         try{
+            Connection conn = DbUtil.getConn();
             PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE employees SET name=?, lastName=?, address=?, phone=?, note=?, hourlyPayment=? WHERE id=?");
-            stmt.setString(1, name);
-            stmt.setString(2, lastName);
-            stmt.setString(3, address);
-            stmt.setString(4, phone);
-            stmt.setString(5, note);
-            stmt.setBigDecimal(6, hourlyPayment);
-            stmt.setInt(7, id);
+            stmt.setString(1, this.getName());
+            stmt.setString(2, this.getLastName());
+            stmt.setString(3, this.getAddress());
+            stmt.setString(4, this.getPhone());
+            stmt.setString(5, this.getNote());
+            stmt.setBigDecimal(6, this.getHourlyPayment());
+            stmt.setInt(7, this.getId());
             stmt.executeUpdate();
         }catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public static EmployeesDao loadOrdersEmployee(int id) {
+        try{
+            String sql = "SELECT employees.name, employees.lastName, employees.address, employees.phone, employees.note, employees.hourlyPayment FROM employees LEFT JOIN orders ON orders.employee_id = employees.id WHERE employee_id = ?";
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet resultSet = stmt.executeQuery();
+            while(resultSet.next()) {
+                EmployeesDao loadedOrder = new EmployeesDao();
+                loadedOrder.setName(resultSet.getString("name"));
+                loadedOrder.setLastName(resultSet.getString("lastName"));
+                loadedOrder.setAddress(resultSet.getString("address"));
+                loadedOrder.setPhone(resultSet.getString("phone"));
+                loadedOrder.setNote(resultSet.getString("note"));
+                loadedOrder.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
+                return loadedOrder;
+            }
+        }catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
     }
 }

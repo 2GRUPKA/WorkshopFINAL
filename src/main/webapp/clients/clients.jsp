@@ -13,12 +13,13 @@
 <body>
 <form method="post" action="/AddClient">
     Clients Name:<input type="text" name="name" />
-    Clients Last name:<input type="text" name="lastName" />
-    Clients Date of Birth:<input type="text" name="birthDate" />
-    <%--<br><button type="button">Edit</button>--%>
-    <%--<button type="button">Delete</button>--%>
-    <%--<button type="button">Show All</button>--%>
+    <br>Clients Last name:<input type="text" name="lastName" />
+    <br>Clients Date of Birth:<input type="date" name="birthDate" />
     <br> <input type="submit" name="Submit"/>
+
+   <br><input type="button" value="Main Page " onclick="window.location.href='/index.jsp'" />
+
+
 </form>
 
 

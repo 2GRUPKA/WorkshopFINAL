@@ -31,8 +31,8 @@ public class EmployeeEdit extends HttpServlet {
             id = Integer.parseInt(idStr);
             hourlyPaymentDouble = Double.parseDouble(hourlyPayment);
             hourlyPaymentDecimal = BigDecimal.valueOf(hourlyPaymentDouble);
-            EmployeesDao employeesDao = EmployeesDao.loadById(id);
-            employeesDao.updateEmployee(id,name,lastName,address,phone,note,hourlyPaymentDecimal);
+            EmployeesDao employeesDao = new EmployeesDao(name,lastName, address,phone,note,hourlyPaymentDecimal);
+            employeesDao.updateEmployee();
             employeesDao.saveToDB();
             response.getWriter().append("Edited employee with id:"+id+ " " + name +" "+lastName);
 

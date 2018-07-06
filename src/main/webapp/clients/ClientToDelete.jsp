@@ -8,13 +8,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>CAR REPAIR</title>
 </head>
 <body>
+<%@ include file="/fragments/header.jsp"  %>
+<div>
+    <ul>
+        <h3>Delete a client....</h3>
 
-<form method="post" action="/DeleteClient">
-    Clients ID: <input type="number" name="id" />
-    <br><input type="submit" name="submit"/>
+        <c:forEach var="clients" items="${listClients}">
+            <li>
+                <h3> <i>id:</i> ${clients.getId()} Name: ${listClients.getName()} Last name:  ${listClients.getLastName()}</h3>
+
+            </li>
+        </c:forEach>
+    </ul>
+</div>
+
+
+<form method='post' action="/DeleteClient">
+    <div> <label> Type clients id to delete </label></div>
+    <input type='number' name='id' min=0 />
+    </label> <input type='submit' value='submit'/>
+    <%@ include file="/fragments/footer.jsp"  %>
+
 </form>
 
 </body>

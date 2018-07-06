@@ -11,17 +11,21 @@
     <title>Title</title>
 </head>
 <body>
+<%@ include file="/fragments/header.jsp"  %>
+
 <div>
     <ul>
         <h3>List clients:</h3>
         <c:forEach var="clients" items="${listClients}">
             <li>
-                <h3> <i>id:</i> ${clients_Clients.getId()}  <br><i>Name:</i> ${clients_Clients.getName()} ${clients_Clients.getLastName()}</h3>
+                <h3> <i>id:</i> ${clients.getId()} Name: ${clients.getName()} ${clients.getLastName()}</h3>
 
             </li>
         </c:forEach>
     </ul>
 </div>
+<%@ include file="/fragments/footer.jsp"  %>
+
 
 </body>
 </html>

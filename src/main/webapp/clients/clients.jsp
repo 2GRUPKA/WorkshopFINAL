@@ -11,13 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/AddClient">
-    Clients Name:<input type="text" name="name" />
-    <br>Clients Last name:<input type="text" name="lastName" />
-    <br>Clients Date of Birth:<input type="date" name="birthDate" />
-    <br> <input type="submit" name="Submit"/>
+<%@ include file="/fragments/header.jsp"  %>
 
-   <br><input type="button" value="Main Page " onclick="window.location.href='/index.jsp'" />
+<form method='post' action=''/>
+<div><label>Name: <br><input type='text' name='name' required /> </label></div>
+<div><label>Surname: <br><input type='text' name='lastName' required /> </label></div>
+<div><label>Birth Date: <br><input type='date' name='birthDate'  /> </label></div>
+<div><input type='submit' value='submit'/> </div>
+
+<%@ include file="/fragments/footer.jsp"  %>
 
 
 </form>

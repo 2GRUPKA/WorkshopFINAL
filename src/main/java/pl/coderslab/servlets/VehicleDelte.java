@@ -1,4 +1,4 @@
-package pl.coderslab.servlets.vehiclesServlets;
+package pl.coderslab.servlets;
 
 import pl.coderslab.dao.VehiclesDao;
 
@@ -11,16 +11,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/VehicleDelte")
+@WebServlet(name = "VehicleDelete", urlPatterns =   "/VehicleDelte")
 public class VehicleDelte extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter("id");
         int id;
         try {
             id = Integer.parseInt(idStr);
-            VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
-            veh1.deleteVeh();
-            response.getWriter().append("Delated vehicle "+veh1.getBrand()+" "+veh1.getModel()+" with id: "+id);
+            if (id!=0) {
+                VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
+                veh1.deleteVeh();
+                response.getWriter().append("Delated vehicle " + veh1.getBrand() + " " + veh1.getModel() + " with id: " + id);
+            }
         }catch (Exception e) {
             response.getWriter().append("Was not able to delete this vehicle. reason: " +e);
         }

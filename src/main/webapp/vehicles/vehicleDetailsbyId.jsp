@@ -18,14 +18,27 @@
     <input type="text" name="id" placeholder="Vehicles id">
     <input type="submit" value="See details">
 </form>
-    
+
 </div>
+<h3>Details of choosen vehicle:</h3>
+<h6>Car: ${veh.getBrand()} ${veh.getModel()},
+    registration: ${veh.getRegistrationNumber()},
+    production year: ${veh.getProductionYear()},
+    next reapair date: ${veh.getNextRepairDate()} </h6>
+<h3>Repairs:</h3>
 <div>
     <ul>
-        <h3>Vehicles list:</h3>
-        <c:forEach var="vehicle" items="${allVehicls}">
+        <c:forEach var="atr" items="${repairs}">
             <li>
-                <h6> <i>Id:</i> ${vehicle.getId()}  <br><i>Car:</i> ${vehicle.getBrand()}, ${vehicle.getModel()}</h6>
+                <h6>id: ${atr.getId()},
+                    problem description: ${atr.getProblemDescription()},
+                    acceptance date: ${atr.getAcceptanceDate()},
+                    repair started: ${atr.getStartRepair()},
+                    after repair descreption: ${atr.getRepairDescription()},
+                    status: ${atr.getStatus()},
+                    repair cost: ${atr.getRepairCost()},
+                    cost of parts: ${atr.getPartCost()}
+                </h6>
 
             </li>
         </c:forEach>

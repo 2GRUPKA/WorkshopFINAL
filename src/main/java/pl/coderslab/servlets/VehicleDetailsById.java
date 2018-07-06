@@ -1,4 +1,4 @@
-package pl.coderslab.servlets.vehiclesServlets;
+package pl.coderslab.servlets;
 
 import pl.coderslab.dao.OrdersDao;
 import pl.coderslab.dao.VehiclesDao;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/VehicleDetailsById")
+@WebServlet(name = "VehicleDetailsById", urlPatterns = "/VehicleDetailsById")
 public class VehicleDetailsById extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

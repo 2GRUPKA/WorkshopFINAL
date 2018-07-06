@@ -1,4 +1,4 @@
-package pl.coderslab.servlets.vehiclesServlets;
+package pl.coderslab.servlets;
 
 import pl.coderslab.dao.VehiclesDao;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/VehiclesList")
+@WebServlet(name = "VehiclesList", urlPatterns = "/VehiclesList")
 public class VehiclesList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,7 +23,7 @@ public class VehiclesList extends HttpServlet {
             allVehicles = VehiclesDao.loadAllVehs();
             request.setAttribute("allVehicles", allVehicles);
         } catch (SQLException e){
-            response.getWriter().append((CharSequence) e);
+            response.getWriter().append("sql problem");
         }
         request.getRequestDispatcher("vehicles/VehiclesList.jsp").forward(request, response);
     }

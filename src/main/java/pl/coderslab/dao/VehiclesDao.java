@@ -56,51 +56,10 @@ public class VehiclesDao extends Vehicles {
         }
     }
 
-//    public void deleteVehById(int id){
-//        String sql = "DELETE FROM vehicles WHERE id= ?";
-//        try{
-//            if(id!=0){
-//                Connection conn = DbUtil.getConn();
-//                PreparedStatement stmt = conn.prepareStatement(sql);
-//                stmt.setInt(1, 0);
-//                stmt.executeUpdate();
-//                setId(0);
-//            }
-//        }catch (SQLException e) {
-//            System.err.println(e.getMessage());
-//        }
-//    }
 
 
-    public void deleteVeh(){//    public static OrdersDao loadVehicleRepairs (int id) {
-//        try {
-//            String sql = "SELECT * FROM orders WHERE vehicle_id=?";
-//            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-//            stmt.setInt(1, id);
-//            ResultSet resultSet = stmt.executeQuery();
-//            while (resultSet.next()) {
-//                OrdersDao loadedOrder = new OrdersDao();
-//                loadedOrder.setId(resultSet.getInt("id"));
-//                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
-//                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
-//                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
-//                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
-//                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
-//                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
-//                loadedOrder.setStatus(resultSet.getString("status"));
-//                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
-//                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
-//                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
-//                loadedOrder.setRepairHours(resultSet.getInt("repairHours"));
-//                return loadedOrder;
-//            }
-//
-//        } catch (SQLException e) {
-//            System.err.println(e.getMessage());
-//        }
-//
-//        return null;
-//    }
+
+    public void deleteVeh(){
         String sql = "DELETE FROM vehicles WHERE id= ?";
         try{
             if(getId()!=0){

@@ -13,23 +13,12 @@
 </head>
 <body>
 <%@ include file="/fragments/header.jsp"  %>
-<h3>Details of choosen vehicle:</h3>
-<h6>Car: ${veh.brand} ${veh.model()}, registration: ${veh.registrationNumber} production year: ${veh.productionYear}, next reapair date: ${veh.nextRepairDate} </h6>
-
+</div><h3>Vehicles list:</h3>
 <div>
     <ul>
-        <h3>Repairs:</h3>
-        <c:forEach var="atr" items="${repairs}">
+        <c:forEach var="vehicle" items="${allVehicles}">
             <li>
-                <h6>id: ${atr.id},
-                    problem description: ${atr.problemDescription},
-                    acceptance date: ${atr.acceptanceDate},
-                    repair started: ${atr.startRepair},
-                    after repair descreption: ${atr.repairDescription},
-                    status: ${atr.status},
-                    repair cost: ${atr.repairCost},
-                    cost of parts: ${atr.partCost}
-                </h6>
+                <h6>Id: ${vehicle.getId()}, Car: ${vehicle.getBrand()} ${vehicle.getModel()}</h6>
 
             </li>
         </c:forEach>

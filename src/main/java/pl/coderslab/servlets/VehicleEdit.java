@@ -1,4 +1,4 @@
-package pl.coderslab.servlets.vehiclesServlets;
+package pl.coderslab.servlets;
 
 
 import pl.coderslab.dao.VehiclesDao;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet("/VehicleEdit")
+@WebServlet(name = "VehicleEdit", urlPatterns = "/VehicleEdit")
 public class VehicleEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter("id");

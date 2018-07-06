@@ -22,7 +22,11 @@
         <c:forEach var="current_order" items="${listao}">
             <li>
                 <h6>id: ${current_order.getId()},
+                    problem: ${current_order.getProblemDescription()},
                     repair description: ${current_order.getRepairDescription()},
+                    employee: ${current_order.getEmployee_id()},
+                    status: ${current_order.getStatus()},
+                    vehicle: ${current_order.getVehicle_id()},
                 </h6>
             </li>
         </c:forEach>

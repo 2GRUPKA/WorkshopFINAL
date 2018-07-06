@@ -9,14 +9,24 @@ public class Vehicles {
     private Date productionYear;
     private String registrationNumber;
     private Date nextRepairDate;
+    private int client_id;
 
 
-    public Vehicles(String model, String brand, Date productionYear, String registrationNumber, Date nextRepairDate) {
+    public int getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
+    }
+
+    public Vehicles(String model, String brand, Date productionYear, String registrationNumber, Date nextRepairDate, int client_id) {
         this.model = model;
         this.brand = brand;
         this.productionYear = productionYear;
         this.registrationNumber = registrationNumber;
         this.nextRepairDate = nextRepairDate;
+        this.client_id = client_id;
     }
 
     public Vehicles() {

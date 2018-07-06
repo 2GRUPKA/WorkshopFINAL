@@ -20,9 +20,11 @@ public class VehicleEdit extends HttpServlet {
         Date productionYear = Date.valueOf(request.getParameter("productionYear"));
         String registrationNumber = request.getParameter("registrationNumber");
         Date nextRepairDate = Date.valueOf(request.getParameter("nextRepairDate"));
+        String client_string = request.getParameter("client_id");
 
         try {
             int id = Integer.parseInt(idStr);
+            int client_id = Integer.parseInt(client_string);
             VehiclesDao vehicle1;
             vehicle1 = VehiclesDao.loadVehiclebyId(id);
             if (model!=null)vehicle1.setModel(model);
@@ -30,6 +32,7 @@ public class VehicleEdit extends HttpServlet {
             if (productionYear!=null)vehicle1.setProductionYear(productionYear);
             if (registrationNumber!=null)vehicle1.setRegistrationNumber(registrationNumber);
             if (nextRepairDate!=null)vehicle1.setNextRepairDate(nextRepairDate);
+            if (client_id!=0)vehicle1.setClient_id(client_id);
             vehicle1.editVeh();
             response.getWriter().append("Eddited " +brand+" "+model + " with id: " +id);
         } catch (Exception e){

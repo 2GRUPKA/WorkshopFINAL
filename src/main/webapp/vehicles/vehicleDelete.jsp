@@ -18,17 +18,7 @@
     <input type='text' name='id' min=1 required/>
     <input type='submit' value='Delete.'/>
 </form>
-<div>
-    <ul>
-        <h3>Vehicles list:</h3>
-        <c:forEach var="vehicle" items="${allVehicls}">
-            <li>
-                <h6> <i>Id:</i> ${vehicle.getId()}  <br><i>Car:</i> ${vehicle.getBrand()}, ${vehicle.getModel()}</h6>
-
-            </li>
-        </c:forEach>
-    </ul>
-</div>
+    <%@ include file="/vehicles/VehiclesList.jsp"  %>
     <%@ include file="/fragments/footer.jsp"  %>
 
 <%@ include file="/fragments/footer.jsp"  %>

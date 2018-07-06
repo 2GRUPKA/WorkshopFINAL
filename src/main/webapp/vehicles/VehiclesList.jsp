@@ -18,7 +18,10 @@
     <ul>
         <c:forEach var="vehicle" items="${allVehicles}">
             <li>
-                <h6>Id: ${vehicle.getId()}, Car: ${vehicle.getBrand()} ${vehicle.getModel()}</h6>
+                <h6>Id: ${vehicle.id},
+                    Car: ${vehicle.brand} ${vehicle.model},
+                    Registration number: ${vehicle.registrationNumer},
+                    Car owner's id: ${vehicle.client_id}</h6>
 
             </li>
         </c:forEach>

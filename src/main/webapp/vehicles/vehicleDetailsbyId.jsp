@@ -21,25 +21,26 @@
 
 </div>
 <h3>Details of choosen vehicle:</h3>
-<h6>Car: ${veh.getBrand()} ${veh.getModel()},
-    registration: ${veh.getRegistrationNumber()},
-    production year: ${veh.getProductionYear()},
-    next reapair date: ${veh.getNextRepairDate()} </h6>
+<h6>Car: ${veh.brand} ${veh.model},
+    registration: ${veh.registrationNumber},
+    production year: ${veh.productionYear},
+    next reapair date: ${veh.gextRepairDate}
+    Car owner's id ${veh.client_id}
+</h6>
 <h3>Repairs:</h3>
 <div>
     <ul>
         <c:forEach var="atr" items="${repairs}">
             <li>
                 <h6>id: ${atr.getId()},
-                    problem description: ${atr.getProblemDescription()},
-                    acceptance date: ${atr.getAcceptanceDate()},
-                    repair started: ${atr.getStartRepair()},
-                    after repair descreption: ${atr.getRepairDescription()},
-                    status: ${atr.getStatus()},
-                    repair cost: ${atr.getRepairCost()},
-                    cost of parts: ${atr.getPartCost()}
+                    problem description: ${atr.problemDescription},
+                    acceptance date: ${atr.acceptanceDate},
+                    repair started: ${atr.startRepair},
+                    after repair descreption: ${atr.repairDescription},
+                    status: ${atr.status},
+                    repair cost: ${atr.repairCost},
+                    cost of parts: ${atr.partCost}
                 </h6>
-
             </li>
         </c:forEach>
     </ul>

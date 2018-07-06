@@ -12,8 +12,8 @@ import pl.coderslab.DbUtil;
 public class VehiclesDao extends Vehicles {
 
 
-    public VehiclesDao(String model, String brand, Date productionYear, String registrationNumber, Date nextRepairDate) {
-        super(model, brand, productionYear, registrationNumber, nextRepairDate);
+    public VehiclesDao(String model, String brand, Date productionYear, String registrationNumber, Date nextRepairDate, int client_id) {
+        super(model, brand, productionYear, registrationNumber, nextRepairDate, client_id);
     }
 
     public VehiclesDao() {
@@ -25,12 +25,13 @@ public class VehiclesDao extends Vehicles {
             try {
                 Connection conn = DbUtil.getConn();
                 String generatedColumns[] = {"ID"};
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO vehicles (model,brand,productionYear,registrationNumber,nextRepairDate) VALUES (?,?,?,?,?)", generatedColumns);
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO vehicles (model,brand,productionYear,registrationNumber,nextRepairDate, client_id) VALUES (?,?,?,?,?,?)", generatedColumns);
                 stmt.setString(1, getModel());
                 stmt.setString(2, getBrand());
                 stmt.setDate(3, getProductionYear());
                 stmt.setString(4, getRegistrationNumber());
                 stmt.setDate(5, getNextRepairDate());
+                stmt.setInt(6, getClient_id());
                 stmt.executeUpdate();
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
@@ -42,21 +43,20 @@ public class VehiclesDao extends Vehicles {
         } else {
             try {
                 Connection conn = DbUtil.getConn();
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO vehicles (model=?,brand=?,productionYear=?,registrationNumber=?,nextRepairDate=? WHERE id=?");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO vehicles (model=?,brand=?,productionYear=?,registrationNumber=?,nextRepairDate=?,client_id=? WHERE id=?");
                 stmt.setString(1, getModel());
                 stmt.setString(2, getBrand());
                 stmt.setDate(3, getProductionYear());
                 stmt.setString(4, getRegistrationNumber());
                 stmt.setDate(5, getNextRepairDate());
-                stmt.setLong(6, getId());
+                stmt.setInt(6, getClient_id());
+                stmt.setLong(7, getId());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
         }
     }
-
-
 
 
     public void deleteVeh(){
@@ -78,13 +78,14 @@ public class VehiclesDao extends Vehicles {
         try {
             Connection conn = DbUtil.getConn();
             String Columns[] = {"ID"};
-            PreparedStatement stat = conn.prepareStatement("UPDATE vehicles SET model = ?, brand = ?, productionYear = ?, registrationNumber=?,nextRepairDate=? WHERE id=?");
+            PreparedStatement stat = conn.prepareStatement("UPDATE vehicles SET model = ?, brand = ?, productionYear = ?, registrationNumber=?,nextRepairDate=?,client_id=? WHERE id=?");
             stat.setString(1, getModel());
             stat.setString(2, getBrand());
             stat.setDate(3, getProductionYear());
             stat.setString(4, getRegistrationNumber());
             stat.setDate(5, getNextRepairDate());
-            stat.setInt(6, getId());
+            stat.setInt(6, getClient_id());
+            stat.setInt(7, getId());
             stat.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error! Could not complete the edit request");
@@ -105,10 +106,11 @@ public class VehiclesDao extends Vehicles {
                 loadedVehicle.setRegistrationNumber(rs.getString("registrationNumber"));
                 loadedVehicle.setNextRepairDate(rs.getDate("nextRepairDate"));
                 loadedVehicle.setId(rs.getInt("id"));
+                loadedVehicle.setClient_id(rs.getInt("client_id"));
                 return loadedVehicle;
             }
         } catch (SQLException e) {
-            System.out.println("Error loading Vehicles");
+            e.printStackTrace();
         }
         return null;
     }
@@ -130,6 +132,7 @@ public class VehiclesDao extends Vehicles {
                 loadedVehicle.setProductionYear(rs.getDate("productionYear"));
                 loadedVehicle.setRegistrationNumber(rs.getString("registrationNumber"));
                 loadedVehicle.setNextRepairDate(rs.getDate("nextRepairDate"));
+                loadedVehicle.setClient_id(rs.getInt("client_id"));
                 loadedVehicle.setId(rs.getInt("id"));
                 vehicles.add(loadedVehicle);
             }
@@ -142,8 +145,9 @@ public class VehiclesDao extends Vehicles {
     }
 
     public static ArrayList<OrdersDao> loadVehicleRepairs(int id) throws SQLException {
-        String sql = "SELECT * FROM orders WHERE vehicle_id="+id;
+        String sql = "SELECT * FROM orders WHERE vehicle_id=?";
         PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+        stmt.setInt(1, id);
         return getVehicleRepairs(stmt);
     }
 

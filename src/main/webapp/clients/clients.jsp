@@ -19,6 +19,9 @@
 <div><label>Birth Date: <br><input type='date' name='birthDate'  /> </label></div>
 <div><input type='submit' value='submit'/> </div>
 
+
+
+
 <%@ include file="/fragments/footer.jsp"  %>
 
 

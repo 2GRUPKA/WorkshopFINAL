@@ -1,4 +1,4 @@
-package pl.coderslab.servlets;
+package pl.coderslab.servlets.ClientsServlet;
 
 import pl.coderslab.dao.EmployeesDao;
 
@@ -20,6 +20,8 @@ public class ClientsList extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=utf-8;");
+
         try {
             ArrayList<clientsDao> listClients = clientsDao.loadAll();
             request.setAttribute("listClients", listClients);

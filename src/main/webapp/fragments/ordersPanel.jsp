@@ -17,6 +17,8 @@
 <a href="/editOrder"><button> Edit order</button>  </a>
 <a href="/editOrderStatus"><button> Edit order status</button>  </a>
 <a href="/OrdersList"><button> Orders list </button>  </a>
+<a href="/OrderDetails"><button> Order details </button>  </a>
+
 
 
 

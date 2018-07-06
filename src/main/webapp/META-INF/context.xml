@@ -1,14 +1,30 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<Context path="/">-->
+
+    <!--<Resource name="jdbc/school"-->
+              <!--auth="Container"-->
+              <!--type="javax.sql.DataSource"-->
+              <!--username="sql7245922"-->
+              <!--password="KTdz9mTYra"-->
+              <!--driverClassName="com.mysql.jdbc.Driver"-->
+              <!--connectionProperties="useUnicode=yes;characterEncoding=utf8;"-->
+              <!--url="jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922"-->
+              <!--maxTotal="100"-->
+              <!--maxIdle="30"-->
+              <!--maxWaitMillis="10000" />-->
+<!--</Context>-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
 
     <Resource name="jdbc/school"
               auth="Container"
               type="javax.sql.DataSource"
-              username="sql7245922"
-              password="KTdz9mTYra"
+              username="root"
+              password="coderslab"
               driverClassName="com.mysql.jdbc.Driver"
               connectionProperties="useUnicode=yes;characterEncoding=utf8;"
-              url="jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7245922"
+              url="jdbc:mysql://localhost:3306/crm
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000" />

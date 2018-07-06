@@ -14,11 +14,11 @@
 <%@ include file="/fragments/header.jsp"  %>
 <div>
     <ul>
-        <h3>Delete a client....</h3>
+        <h3>Form to delete a client</h3>
 
         <c:forEach var="clients" items="${listClients}">
             <li>
-                <h3> <i>id:</i> ${clients.getId()} Name: ${listClients.getName()} Last name:  ${listClients.getLastName()}</h3>
+                <h3> id: ${clients.getId()} Name: ${listClients.getName()} Last name:  ${listClients.getLastName()}</h3>
 
             </li>
         </c:forEach>

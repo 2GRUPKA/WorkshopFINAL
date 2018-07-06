@@ -4,6 +4,16 @@ import java.sql.Date;
 
 public class Clients {
 
+    @Override
+    public String toString() {
+        return "Clients{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
+    }
+
     private int id;
     private String name;
     private String lastName;

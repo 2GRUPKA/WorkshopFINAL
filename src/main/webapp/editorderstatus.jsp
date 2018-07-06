@@ -16,9 +16,16 @@
 
 <div>
     <form action="" method="post">
-        <div> <input type='text' name='id' required placeholder="id" /></div>
+        <div> <input type='number' name='id' required placeholder="id" /></div>
+        <div>
+            <select name="status">
+                <option value="Accepted">Accepted</option>
+                <option value="Taken into repair">Taken into repair</option>
+                <option value="In repair">In repair</option>
+                <option value="Ready for pick up">Ready for pick up</option>
 
-        <div> <input type='text' name='status' required placeholder="status" /></div>
+            </select>
+        </div>
 
         <button>SAVE TO DB</button>
 

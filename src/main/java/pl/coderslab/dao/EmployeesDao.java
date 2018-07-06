@@ -142,25 +142,4 @@ public class EmployeesDao extends Employees {
         }
     }
 
-    public static ArrayList<OrdersDao> loadOrdersEmployee(int id) {
-        try{
-            String sql = "SELECT orders.id, orders.status, orders.vehicle_id, orders.problemDescription FROM orders LEFT JOIN employees ON orders.employee_id = employees.id WHERE employee_id = ?";
-            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-            ArrayList<OrdersDao> loadedOrders = new ArrayList<>();
-            stmt.setInt(1, id);
-            ResultSet resultSet = stmt.executeQuery();
-            while(resultSet.next()) {
-                OrdersDao loadedOrder = new OrdersDao();
-                loadedOrder.setId(resultSet.getInt("orders.id"));
-                loadedOrder.setStatus(resultSet.getString("orders.status"));
-                loadedOrder.setVehicle_id(resultSet.getInt("orders.vehicle_id"));
-                loadedOrder.setProblemDescription(resultSet.getString("orders.problemDescription"));
-                loadedOrders.add(loadedOrder);
-            }
-            return loadedOrders;
-        }catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        return null;
-    }
 }

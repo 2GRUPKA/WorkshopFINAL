@@ -16,7 +16,7 @@
 
 <div>
     <form action="" method="post">
-        <div> <input type='text' name='id' required placeholder="id" /></div>
+        <div> <input type='number' name='id' required placeholder="id" /></div>
 
         <div><input type='date' name='acceptanceDate' required/></div>
 
@@ -30,8 +30,15 @@
 
         <div><input type='text' name='repairDescription' required placeholder="repairDescription" /></div>
 
-        <div> <input type='text' name='status' required placeholder="status" /></div>
+        <div>
+            <select name="status">
+                <option value="Accepted">Accepted</option>
+                <option value="Taken into repair">Taken into repair</option>
+                <option value="In repair">In repair</option>
+                <option value="Ready for pick up">Ready for pick up</option>
 
+            </select>
+        </div>
         <div> <input type='text' name='vehicle_id' required placeholder="vehicle_id" /></div>
 
         <div> <input type='text' name='repairCost' required placeholder="repairCost" /></div>

@@ -14,6 +14,7 @@ import java.sql.Date;
 @WebServlet(name = "OrdersAdd", urlPatterns = "/addOrder")
 public class OrdersAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=utf-8;");
         String acceptanceDate = request.getParameter("acceptanceDate");
         String planningStartDate = request.getParameter("planningStartDate");
         String startRepair = request.getParameter("startRepair");
@@ -47,7 +48,9 @@ public class OrdersAdd extends HttpServlet {
 
             OrdersDao ordersDao = new OrdersDao(acceptanceDateDate, planningStartDateDate, startRepairDate, employee_idId, problemDescription, repairDescription, status, vehicle_idId, repairCostDec, partCostCostDec, repairHoursHours);
             ordersDao.saveToDB();
-            response.getWriter().append("Added new order " + problemDescription);
+            request.setAttribute("repairDescription", repairDescription);
+            response.sendRedirect("/addedOrder.jsp?repairDescription="+repairDescription);
+            //response.getWriter().append("Added new order " + problemDescription);
 
         } catch (Exception e) { e.printStackTrace(); response.getWriter().append("Cannot add new order!"); }
 

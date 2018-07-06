@@ -26,7 +26,7 @@
 </div>
 
 
-<form method='post' action="/ClientsServlet/DeleteClient">
+<form method='post' action="/DeleteClient">
     <div> <label> Type clients id to delete </label></div>
     <input type='number' name='id' min=0 />
     </label> <input type='submit' value='submit'/>

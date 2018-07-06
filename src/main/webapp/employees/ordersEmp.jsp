@@ -15,11 +15,22 @@
 <%@ include file="/fragments/header.jsp"  %>
 <div>
     <ul>
-        <h3>List orders with employee id: ${param.id}</h3>
-        <c:forEach var="curr_order" items="${listOrders}">
-            <li>
-                <h3> <i>Vehicle id=</i> ${curr_order.vehicle_id()}  <i>Status=</i> ${curr_order.id} ${curr_order.status}</h3>
 
+        <c:forEach var="current_order" items="${listEO}">
+            <li>
+                <h6>id: ${current_order.getId()},
+                    acceptance: ${current_order.getAcceptanceDate()},
+                    planning: ${current_order.getPlanningStartDate()},
+                    start: ${current_order.getStartRepair()},
+                    employee: ${current_order.getEmployee_id()},
+                    problem: ${current_order.getProblemDescription()},
+                    repair description: ${current_order.getRepairDescription()},
+                    status: ${current_order.getStatus()},
+                    vehicle: ${current_order.getVehicle_id()},
+                    repair cost: ${current_order.getRepairCost()},
+                    part cost: ${current_order.getPartCost()},
+                    repair hours: ${current_order.getRepairHours()}
+                </h6>
             </li>
         </c:forEach>
     </ul>

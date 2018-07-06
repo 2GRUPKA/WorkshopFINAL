@@ -16,26 +16,29 @@ import java.util.Iterator;
 @WebServlet(name = "EmployeeOrders", urlPatterns = "/employeeOrders")
 public class EmployeeOrders extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=utf-8;");
-        request.setCharacterEncoding("UTF-8");
+       // response.setContentType("text/html; charset=utf-8;");
+      //  request.setCharacterEncoding("UTF-8");
+//
+//        String idStr = request.getParameter("id");
+//        int id;
+//        try {
+//            id = Integer.parseInt(idStr);
+//            ArrayList<OrdersDao> listOrders = EmployeesDao.loadOrdersEmployee(id);
+//            Iterator<OrdersDao> it = listOrders.iterator();
+//            while(it.hasNext()) {
+//                response.getWriter().append("status= " + it.next().getStatus() + " vehicle id = " +
+//                        it.next().getVehicle_id() + "id order = " + it.next().getId());
+//            }
+//            request.setAttribute("listOrders", listOrders);
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            response.getWriter().append("Wrong id");
+//        }
 
-        String idStr = request.getParameter("id");
-        int id;
-        try {
-            id = Integer.parseInt(idStr);
-            ArrayList<OrdersDao> listOrders = EmployeesDao.loadOrdersEmployee(id);
-            Iterator<OrdersDao> it = listOrders.iterator();
-            while(it.hasNext()) {
-                response.getWriter().append("status= " + it.next().getStatus() + " vehicle id = " +
-                        it.next().getVehicle_id() + "id order = " + it.next().getId());
-            }
-            request.setAttribute("listOrders", listOrders);
 
-//            response.getWriter().append(EmployeesDao.loadOrdersEmployee(id).toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.getWriter().append("Wrong id");
-        }
+
 
     }
 
@@ -44,14 +47,14 @@ public class EmployeeOrders extends HttpServlet {
         int id;
         try {
             id = Integer.parseInt(idStr);
-            ArrayList<OrdersDao> listOrders = EmployeesDao.loadOrdersEmployee(id);
-            request.setAttribute("listOrders", listOrders);
-
-//            response.getWriter().append(EmployeesDao.loadOrdersEmployee(id).toString());
-        } catch (Exception e) {
+            ArrayList<OrdersDao> listEO = OrdersDao.loadByEmployeeId(id);
+            request.setAttribute("listEO", listEO);
+        } catch (SQLException e) {
             e.printStackTrace();
-            response.getWriter().append("Wrong id");
         }
+        request.getRequestDispatcher("/employees/ordersEmp.jsp").forward(request, response);
+
+
 //        request.getRequestDispatcher("/employees/orders.jsp").forward(request, response);
     }
 }

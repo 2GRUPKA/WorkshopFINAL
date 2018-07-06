@@ -71,6 +71,41 @@ public class OrdersDao extends Orders {
         }
         return null;
     }
+    public static ArrayList<OrdersDao>loadByEmployeeId(int employee_id)throws SQLException {
+        String sql = "SELECT * FROM orders WHERE employee_id=?";
+        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+        stmt.setInt(1, employee_id);
+        return getOrdersFromStatement(stmt);
+    }
+//        try {
+//            String sql = "SELECT * FROM orders WHERE employee_id=?";
+//            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+//            stmt.setInt(1, employee_id);
+//            ResultSet resultSet = stmt.executeQuery();
+//            while (resultSet.next()) {
+//                OrdersDao loadedOrder = new OrdersDao();
+//
+//                loadedOrder.setId(resultSet.getInt("id"));
+//                loadedOrder.setAcceptanceDate(resultSet.getDate("acceptanceDate"));
+//                loadedOrder.setPlanningStartDate(resultSet.getDate("planningStartDate"));
+//                loadedOrder.setStartRepair(resultSet.getDate("startRepair"));
+//                loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+//                loadedOrder.setProblemDescription(resultSet.getString("problemDescription"));
+//                loadedOrder.setRepairDescription(resultSet.getString("repairDescription"));
+//                loadedOrder.setStatus(resultSet.getString("status"));
+//                loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+//                loadedOrder.setRepairCost(resultSet.getBigDecimal("repairCost"));
+//                loadedOrder.setPartCost(resultSet.getBigDecimal("partCost"));
+//                loadedOrder.setRepairHours(resultSet.getInt("repairHours"));
+//                return loadedOrder;
+//            }
+//
+//        } catch (SQLException e) {
+//            System.err.println(e.getMessage());
+//        }
+//
+//        return null;
+//    }
 
     public static OrdersDao loadById(int id) {
         try {
@@ -183,7 +218,7 @@ public class OrdersDao extends Orders {
         try {
             Connection conn = DbUtil.getConn();
             String Columns[] = {"id"};
-            PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET status = ?" +
+            PreparedStatement stmt = DbUtil.getConn().prepareStatement("UPDATE orders SET acceptanceDate = acceptanceDate, planningStartDate = planningStartDate, startRepair = startRepair, employee_id = employee_id, problemDescription = problemDescription, repairDescription = repairDescription, status = ?, vehicle_id = vehicle_id,repairCost = repairCost, partCost = partCost, repairHours = repairHours " +
                     "WHERE id = ?");
             stmt.setString(1, this.getStatus());
             stmt.setInt(2, this.getId());

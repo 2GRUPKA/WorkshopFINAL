@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dominik
@@ -24,7 +25,7 @@
     </ul>
 </div>
 
-<form method='post' action=''>
+<form method='post' action='/deleteOrder'>
     <div> <label> Type id order to delete </label></div>
     <input type='number' name='id' min=0 />
     </label> <input type='submit' value='submit'/>

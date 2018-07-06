@@ -142,22 +142,22 @@ public class EmployeesDao extends Employees {
         }
     }
 
-    public static EmployeesDao loadOrdersEmployee(int id) {
+    public static ArrayList<OrdersDao> loadOrdersEmployee(int id) {
         try{
-            String sql = "SELECT employees.name, employees.lastName, employees.address, employees.phone, employees.note, employees.hourlyPayment FROM employees LEFT JOIN orders ON orders.employee_id = employees.id WHERE employee_id = ?";
+            String sql = "SELECT orders.id, orders.status, orders.vehicle_id, orders.problemDescription FROM orders LEFT JOIN employees ON orders.employee_id = employees.id WHERE employee_id = ?";
             PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+            ArrayList<OrdersDao> loadedOrders = new ArrayList<>();
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
             while(resultSet.next()) {
-                EmployeesDao loadedOrder = new EmployeesDao();
-                loadedOrder.setName(resultSet.getString("name"));
-                loadedOrder.setLastName(resultSet.getString("lastName"));
-                loadedOrder.setAddress(resultSet.getString("address"));
-                loadedOrder.setPhone(resultSet.getString("phone"));
-                loadedOrder.setNote(resultSet.getString("note"));
-                loadedOrder.setHourlyPayment(resultSet.getBigDecimal("hourlyPayment"));
-                return loadedOrder;
+                OrdersDao loadedOrder = new OrdersDao();
+                loadedOrder.setId(resultSet.getInt("orders.id"));
+                loadedOrder.setStatus(resultSet.getString("orders.status"));
+                loadedOrder.setVehicle_id(resultSet.getInt("orders.vehicle_id"));
+                loadedOrder.setProblemDescription(resultSet.getString("orders.problemDescription"));
+                loadedOrders.add(loadedOrder);
             }
+            return loadedOrders;
         }catch (SQLException e) {
             System.err.println(e.getMessage());
         }

@@ -16,7 +16,7 @@
 <a href="/employeeDelete"><button> Delete employee </button>  </a>
 <a href="/employeeList"> <button>List employees</button></a>
 <a href="/employeeEdit"> <button>Edit employee</button></a>
-<a href="/employeeOrders"> <button>Orders employee</button></a>
+<a href="/employees/orders.jsp"> <button>Employee's orders</button></a>
 
 
 </body>

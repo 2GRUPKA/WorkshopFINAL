@@ -21,7 +21,7 @@ public class OrdersEditStatus extends HttpServlet {
         try {
             idId = Integer.parseInt(id);
             OrdersDao ordersDao = new OrdersDao(idId, status);
-            ordersDao.editOrder();
+            ordersDao.editStatus();
             //  response.getWriter().append("Edited order " +id +"   " + problemDescription);
             request.setAttribute("id", id);
             response.sendRedirect("/editedOrder.jsp?id="+id);

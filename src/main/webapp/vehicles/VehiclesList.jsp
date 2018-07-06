@@ -12,23 +12,30 @@
     <title>Title</title>
 </head>
 <body>
+<%@ include file="/fragments/header.jsp"  %>
+<h3>Details of choosen vehicle:</h3>
+<h6>Car: ${veh.brand} ${veh.model()}, registration: ${veh.registrationNumber} production year: ${veh.productionYear}, next reapair date: ${veh.nextRepairDate} </h6>
 
 <div>
     <ul>
-        <h3>Vehicles list:</h3>
-        <c:forEach var="vehicle" items="${allVehicls}">
+        <h3>Repairs:</h3>
+        <c:forEach var="atr" items="${repairs}">
             <li>
-                <h6> <i>Id:</i> ${vehicle.getId()}  <br><i>Car:</i> ${vehicle.getBrand()}, ${vehicle.getModel()}</h6>
+                <h6>id: ${atr.id},
+                    problem description: ${atr.problemDescription},
+                    acceptance date: ${atr.acceptanceDate},
+                    repair started: ${atr.startRepair},
+                    after repair descreption: ${atr.repairDescription},
+                    status: ${atr.status},
+                    repair cost: ${atr.repairCost},
+                    cost of parts: ${atr.partCost}
+                </h6>
 
             </li>
         </c:forEach>
     </ul>
 </div>
-<h3>Enter id of vehicle, to see all details.</h3>
-<div><form method="get" action="/VehicleDetailsById">
-    <input type="text" name="id" placeholder="Vehicles id">
-    <input type="submit" value="See details">
-</form>
-</div>
+
+<%@ include file="/fragments/footer.jsp"  %>
 </body>
 </html>

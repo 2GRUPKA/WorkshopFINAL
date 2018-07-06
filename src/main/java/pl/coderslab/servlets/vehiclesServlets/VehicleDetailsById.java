@@ -25,7 +25,7 @@ public class VehicleDetailsById extends HttpServlet {
             VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
             ArrayList<OrdersDao> vehiclesRepairs = VehiclesDao.loadVehicleRepairs(id);
             request.setAttribute("reapirs", vehiclesRepairs);
-            request.setAttribute("veh1", veh1);
+            request.setAttribute("veh", veh1);
         } catch (Exception e){
             response.getWriter().append((CharSequence) e);
         }

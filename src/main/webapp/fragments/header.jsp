@@ -4,5 +4,6 @@
 
     <%@ include file="/fragments/employeePanel.jsp"  %>
     <%@ include file="/fragments/ordersPanel.jsp"  %>
+    <%@ include file="/fragments/vehiclePanel.jsp"  %>
 
 </header>

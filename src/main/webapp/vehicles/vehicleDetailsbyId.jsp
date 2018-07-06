@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: milosz
@@ -11,8 +12,26 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Details of choosen vehicle:</h3>
+<%@ include file="/fragments/header.jsp"  %>
+<h3>Enter id of vehicle, to see all details.</h3>
+<div><form method="get" action="/VehicleDetailsById">
+    <input type="text" name="id" placeholder="Vehicles id">
+    <input type="submit" value="See details">
+</form>
+    
+</div>
+<div>
+    <ul>
+        <h3>Vehicles list:</h3>
+        <c:forEach var="vehicle" items="${allVehicls}">
+            <li>
+                <h6> <i>Id:</i> ${vehicle.getId()}  <br><i>Car:</i> ${vehicle.getBrand()}, ${vehicle.getModel()}</h6>
 
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 
+<%@ include file="/fragments/footer.jsp"  %>
 </body>
 </html>

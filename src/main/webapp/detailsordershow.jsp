@@ -26,7 +26,7 @@
 
 </div>
 <div>
-    <form action="/detailsOrder" method="post">
+    <form action="/OrderDetails" method="post">
         order's id<div><input type='number' name='idtoshow' min=0 /></div>
         <button>Show</button>
 

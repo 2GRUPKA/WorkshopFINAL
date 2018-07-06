@@ -27,7 +27,7 @@
                 repair description: ${current_order.getRepairDescription()},
                 status: ${current_order.getStatus()},
                 vehicle: ${current_order.getVehicle_id()},
-            </h6>
+                <a href="/detailsordershow.jsp?id=${current_order.getId()}">DETAILS</a>
 
         </li>
     </c:forEach>

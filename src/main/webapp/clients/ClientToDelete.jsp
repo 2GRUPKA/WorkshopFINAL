@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: karussia
@@ -18,7 +19,7 @@
 
         <c:forEach var="clients" items="${listClients}">
             <li>
-                <h3> id: ${clients.getId()} Name: ${listClients.getName()} Last name:  ${listClients.getLastName()}</h3>
+                <h3> <i>id:</i> ${clients.getId()} Name: ${clients.getName()} ${clients.getLastName()}</h3>
 
             </li>
         </c:forEach>

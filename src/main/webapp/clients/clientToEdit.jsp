@@ -19,7 +19,7 @@
 <div><label>Name: <br><input type='text' name='name' required /> </label></div>
 <div><label>Last Name: <br><input type='text' name='lastName' required /> </label></div>
 <div><label>Birth Date: <br><input type='date' name='birthDate' required /> </label></div>
-    <br> <input type="submit" name="Submit"/>
+<br> <input type="submit" name="Submit"/>
 </form>
 </body>
 <%@ include file="/fragments/footer.jsp"  %>

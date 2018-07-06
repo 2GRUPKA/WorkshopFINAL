@@ -10,18 +10,18 @@
 
 <div>
 
-                <h6>id: ${param.ordersDao.getId()},
-                    acceptance: ${ordersDao.getAcceptanceDate()},
-                    planning: ${ordersDao.getPlanningStartDate()},
-                    start: ${ordersDao.getStartRepair()},
-                    employee: ${ordersDao.getEmployee_id()},
-                    problem: ${ordersDao.getProblemDescription()},
-                    repair description: ${ordersDao.getRepairDescription()},
-                    status: ${ordersDao.getStatus()},
-                    vehicle: ${ordersDao.getVehicle_id()},
-                    repair cost: ${ordersDao.getRepairCost()},
-                    part cost: ${ordersDao.getPartCost()},
-                    repair hours: ${ordersDao.getRepairHours()}
+                <h6>id: ${ordersDao.id},
+                    acceptance: ${ordersDao.acceptanceDate},
+                    planning: ${ordersDao.planningStartDate},
+                    start: ${ordersDao.startRepair},
+                    employee: ${ordersDao.employee_id},
+                    problem: ${ordersDao.problemDescription},
+                    repair description: ${ordersDao.repairDescription},
+                    status: ${ordersDao.status},
+                    vehicle: ${ordersDao.vehicle_id},
+                    repair cost: ${ordersDao.repairCost},
+                    part cost: ${ordersDao.partCost},
+                    repair hours: ${ordersDao.repairHours}
 
 
 </div>

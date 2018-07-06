@@ -39,7 +39,7 @@ public class OrdersDao extends Orders {
     }
 
     public static ArrayList<OrdersDao> loadAll() throws SQLException {
-        String sql = "SELECT * FROM orders";
+        String sql = "SELECT * FROM orders ORDER BY acceptanceDate ASC";
         PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
         return getOrdersFromStatement(stmt);
     }

@@ -22,7 +22,7 @@ public class OrderDetails extends HttpServlet {
                 OrdersDao ordersDao = new OrdersDao();
                 ordersDao = OrdersDao.loadById(idInt);
                 request.setAttribute("ordersDao", ordersDao);
-                response.sendRedirect("/detailsordershow.jsp");
+                request.getRequestDispatcher("/detailsordershow.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }

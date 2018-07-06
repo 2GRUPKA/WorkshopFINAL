@@ -26,7 +26,7 @@ public class DeleteClient extends HttpServlet {
         if (!id.isEmpty() && id != null) {
             try {
                 idInt = Integer.parseInt(id);
-                clientsDao ClientsDao = new clientsDao(idInt);
+                clientsDao ClientsDao = new clientsDao();
                 ClientsDao = clientsDao.loadbyId(idInt);
                 ClientsDao.deleteFromClients();
                 request.setAttribute("id",idInt);

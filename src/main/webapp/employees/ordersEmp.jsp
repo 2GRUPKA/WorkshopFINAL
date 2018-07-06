@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: dominik
-  Date: 05.07.18
-  Time: 21:39
+  Date: 06.07.18
+  Time: 10:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,13 +13,17 @@
 </head>
 <body>
 <%@ include file="/fragments/header.jsp"  %>
-<div> Type employee id to show orders
-    <form method="post", action="/employeeOrders"/>
-    <input type="number" name="id" required/>
-    <input type="submit" value="submit"/>
-    </form>
- </div>
+<div>
+    <ul>
+        <h3>List orders with employee id: ${param.id}</h3>
+        <c:forEach var="curr_order" items="${listOrders}">
+            <li>
+                <h3> <i>Vehicle id=</i> ${curr_order.vehicle_id()}  <i>Status=</i> ${curr_order.id} ${curr_order.status}</h3>
 
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 <%@ include file="/fragments/footer.jsp"  %>
 </body>
 </html>

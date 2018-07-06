@@ -1,6 +1,7 @@
 package pl.coderslab.servlets;
 
 import pl.coderslab.dao.EmployeesDao;
+import pl.coderslab.dao.OrdersDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 @WebServlet(name = "EmployeeOrders", urlPatterns = "/employeeOrders")
 public class EmployeeOrders extends HttpServlet {
@@ -20,7 +23,15 @@ public class EmployeeOrders extends HttpServlet {
         int id;
         try {
             id = Integer.parseInt(idStr);
-            EmployeesDao.loadOrdersEmployee(id);
+            ArrayList<OrdersDao> listOrders = EmployeesDao.loadOrdersEmployee(id);
+            Iterator<OrdersDao> it = listOrders.iterator();
+            while(it.hasNext()) {
+                response.getWriter().append("status= " + it.next().getStatus() + " vehicle id = " +
+                        it.next().getVehicle_id() + "id order = " + it.next().getId());
+            }
+            request.setAttribute("listOrders", listOrders);
+
+//            response.getWriter().append(EmployeesDao.loadOrdersEmployee(id).toString());
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().append("Wrong id");
@@ -29,6 +40,18 @@ public class EmployeeOrders extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/employees/orders.jsp").forward(request, response);
+        String idStr = request.getParameter("id");
+        int id;
+        try {
+            id = Integer.parseInt(idStr);
+            ArrayList<OrdersDao> listOrders = EmployeesDao.loadOrdersEmployee(id);
+            request.setAttribute("listOrders", listOrders);
+
+//            response.getWriter().append(EmployeesDao.loadOrdersEmployee(id).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().append("Wrong id");
+        }
+//        request.getRequestDispatcher("/employees/orders.jsp").forward(request, response);
     }
 }

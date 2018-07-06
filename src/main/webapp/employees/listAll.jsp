@@ -18,13 +18,16 @@
         <h3>List employees:</h3>
         <c:forEach var="curr_Employee" items="${listEmp}">
             <li>
-                <h3> <i>id=</i> ${curr_Employee.getId()}  <i>fullname=</i> ${curr_Employee.getName()} ${curr_Employee.getLastName()}</h3>
+                <h3> <i>id=</i> ${curr_Employee.getId()}  <i>fullname=</i> ${curr_Employee.getName()}
+                    ${curr_Employee.getLastName()}, <i>address=</i> ${curr_Employee.getAddress},
+                    <i>phone= </i> ${curr_Employee.getPhone()}, <i>note= </i> ${curr_Employee.getNote()},
+                    <i>hourly payment= </i> ${curr_Employee.getHourlyPayment} </h3>
 
             </li>
         </c:forEach>
     </ul>
 </div>
-<a href="/employees/listAll.jsp"><button>Detailed list</button></a>
+<
 <%@ include file="/fragments/footer.jsp"  %>
 </body>
 </html>

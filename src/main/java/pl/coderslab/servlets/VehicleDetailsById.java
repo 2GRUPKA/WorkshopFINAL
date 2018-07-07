@@ -27,7 +27,7 @@ public class VehicleDetailsById extends HttpServlet {
             request.setAttribute("reapirs", vehiclesRepairs);
             request.setAttribute("veh", veh1);
         } catch (Exception e){
-            response.getWriter().append((CharSequence) e);
+            e.printStackTrace();
         }
         request.getRequestDispatcher("vehicles/vehicleDetailsbyId.jsp").forward(request, response);
     }

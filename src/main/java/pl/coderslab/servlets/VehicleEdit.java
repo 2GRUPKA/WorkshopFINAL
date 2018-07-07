@@ -36,7 +36,8 @@ public class VehicleEdit extends HttpServlet {
             vehicle1.editVeh();
             response.getWriter().append("Eddited " +brand+" "+model + " with id: " +id);
         } catch (Exception e){
-            response.getWriter().append("Cannot edit this vehicle! Reason: " + e);
+            response.getWriter().append("Cannot edit this vehicle! Reason: " );
+            e.printStackTrace();
         }
     }
 

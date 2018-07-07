@@ -11,20 +11,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "VehicleDelete", urlPatterns =   "/VehicleDelte")
-public class VehicleDelte extends HttpServlet {
+@WebServlet(name = "VehicleDelete", urlPatterns =   "/VehicleDelete")
+public class VehicleDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter("id");
         int id;
         try {
             id = Integer.parseInt(idStr);
-            if (id!=0) {
+            if (id!=0){
                 VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
                 veh1.deleteVeh();
-                response.getWriter().append("Delated vehicle " + veh1.getBrand() + " " + veh1.getModel() + " with id: " + id);
+                request.setAttribute("id", id);
+                response.sendRedirect("/vehicles/youDeletedVeh.jsp?id="+id);
             }
-        }catch (Exception e) {
-            response.getWriter().append("Was not able to delete this vehicle. reason: " +e);
+        } catch (Exception e){
+            response.getWriter().append("wrong id");
+            e.printStackTrace();
         }
     }
 

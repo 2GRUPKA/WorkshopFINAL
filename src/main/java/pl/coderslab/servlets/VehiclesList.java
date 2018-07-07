@@ -20,6 +20,20 @@ public class VehiclesList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<VehiclesDao> allVehicles;
         try {
+            String del = request.getParameter("delete");
+            if (del!=null) {
+                try {
+                    int id = Integer.parseInt(del);
+                    if (id != 0) {
+                        VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
+                        veh1.deleteVeh();
+                        response.getWriter().append("Delated vehicle " + veh1.getBrand() + " " + veh1.getModel() + " with id: " + id);
+                    }
+                } catch (Exception e) {
+                    response.getWriter().append("Was not able to delete this vehicle. reason: ");
+                    e.printStackTrace();
+                }
+            }
             allVehicles = VehiclesDao.loadAllVehs();
             request.setAttribute("allVehicles", allVehicles);
         } catch (SQLException e){

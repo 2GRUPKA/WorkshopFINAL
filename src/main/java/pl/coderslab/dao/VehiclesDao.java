@@ -38,6 +38,7 @@ public class VehiclesDao extends Vehicles {
                     setId(rs.getInt(1));
                 }
             } catch (SQLException e) {
+                e.printStackTrace();
                 System.err.println(e.getMessage());
             }
         } else {
@@ -53,6 +54,7 @@ public class VehiclesDao extends Vehicles {
                 stmt.setLong(7, getId());
                 stmt.executeUpdate();
             } catch (SQLException e) {
+                e.printStackTrace();
                 System.err.println(e.getMessage());
             }
         }
@@ -66,7 +68,7 @@ public class VehiclesDao extends Vehicles {
                 Connection conn = DbUtil.getConn();
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setLong(1, getId());
-                stmt.executeUpdate();
+                stmt.execute();
                 setId(0);
             }
         }catch (SQLException e) {

@@ -26,7 +26,9 @@
                 <h6>Id: ${vehicle.id},
                     Car: ${vehicle.brand} ${vehicle.model},
                     Registration number: ${vehicle.registrationNumber},
-                    Car owner's id: ${vehicle.client_id}</h6>
+                    Car owner's id: ${vehicle.client_id}
+
+                </h6>
 
             </li>
         </c:forEach>

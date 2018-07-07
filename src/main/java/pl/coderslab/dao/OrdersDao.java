@@ -77,6 +77,13 @@ public class OrdersDao extends Orders {
         stmt.setInt(1, employee_id);
         return getOrdersFromStatement(stmt);
     }
+    public static ArrayList<OrdersDao>loadByVehicleId(int vehicle_id)throws SQLException {
+        String sql = "SELECT * FROM orders WHERE vehicle_id=?";
+        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+        stmt.setInt(1, vehicle_id);
+        return getOrdersFromStatement(stmt);
+    }
+
 //        try {
 //            String sql = "SELECT * FROM orders WHERE employee_id=?";
 //            PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);

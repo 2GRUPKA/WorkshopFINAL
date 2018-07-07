@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: karussia
@@ -15,23 +14,23 @@
 <body>
 <%@ include file="/fragments/header.jsp"  %>
 
-
 <div>
     <ul>
 
-        <c:forEach var="client" items="${list}">
+        <c:forEach var="clients" items="${list}">
             <li>
-                <h6>id: ${client.getId()},
-                     name: ${client.name()},
+                <h6>Clients Id: ${clients.getId()},
+                    Clients Name: ${clients.getName()},
+                    Clients Last Name: ${clients.getLastName()},
+
                 </h6>
             </li>
         </c:forEach>
     </ul>
-
 </div>
 <div>
     <form action="/SearchByLastName" method="post">
-        Clients's last name:<div><input type='text' name='lastNameToShow'  /></div>
+        Client's last name:<div><input type='text' name='lastName'  /></div>
         <button>Show</button>
 
     </form>

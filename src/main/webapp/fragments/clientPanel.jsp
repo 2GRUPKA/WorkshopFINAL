@@ -18,7 +18,9 @@
 <a href="/ClientsList"> <button>List clients</button></a>
 <a href="/EditClient"> <button>Edit client</button></a>
 <a href="/clients/vehicles.jsp"> <button>Clients's vehicles</button></a>
-<a href="/clients/clientsByLastName.jsp"> <button>Search Clients</button></a>
+<a href="/clients/show.jsp"> <button>Search Clients</button></a>
+<a href="/clients/orders.jsp"> <button>Lookup Clients Orders</button></a>
+
 
 
 

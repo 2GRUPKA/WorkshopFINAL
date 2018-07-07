@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: karussia
@@ -14,24 +16,27 @@
 <%@ include file="/fragments/header.jsp"  %>
 
 
+
 <div>
+    <ul>
 
-    <h6>id: ${ClientsDao.id},
-        acceptance: ${ClientsDao.name},
-        planning: ${ClientsDao.lastName},
-        start: ${ClientsDao.birthDate},
+                <h6>Clients Id: ${clients.id},
+                    Clients Name: ${clients.name},
+                    Clients Last Name: ${clients.lastName},
 
+                </h6>
 
-
+    </ul>
 </div>
 <div>
     <form action="/SearchByLastName" method="post">
-        Clients's last name<div><input type='text' name='clientToShow' /></div>
+        Clients's last name:<div><input type='text' name='lastName'  /></div>
         <button>Show</button>
 
     </form>
 
 </div>
+
 
 <%@ include file="/fragments/footer.jsp"  %>
 

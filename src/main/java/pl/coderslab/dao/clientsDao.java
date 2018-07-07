@@ -86,7 +86,6 @@ public class clientsDao extends Clients {
     }
 
 
-
     private static ArrayList<clientsDao> getClientsFromStatement(PreparedStatement stmt) {
         try {
             ArrayList<clientsDao> client = new ArrayList<clientsDao>();

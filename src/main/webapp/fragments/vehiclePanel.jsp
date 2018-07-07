@@ -14,11 +14,10 @@
 <%--<%@ include file="/fragments/header.jsp"  %>--%>
 
 <p>Menage vehicles:</p>
-<a href="/VehicleAdd"><button>Add a vehicle</button>    </a>
-<a href="/VehicleEdit"><button>Edit a vehicle</button>  </a>
-<a href="/VehicleDelete"> <button>Delete a vehicle</button></a>
-<a href="/VehiclesList"> <button>Show all vehicles</button></a>
-<a href="/VehicleDetailsById"> <button>Vehicle details</button></a>
+<a href="/VehicleAdd"><button>Add a vehicle</button></a>
+<a href="/VehicleEdit"><button>Edit a vehicle</button></a>
+<a href="/VehicleDelete"><button>Delete a vehicle</button></a>
+<a href="/VehiclesList"><button>Show all vehicles</button></a>
 <%--<%@ include file="/fragments/footer.jsp"  %>--%>
 
 </body>

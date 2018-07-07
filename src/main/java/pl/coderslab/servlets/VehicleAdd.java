@@ -19,11 +19,14 @@ public class VehicleAdd extends HttpServlet {
         String registrationNumber = request.getParameter("registrationNumber");
         String nextRepairDate = request.getParameter("nextRepairDate");
         String client_string = request.getParameter("client_id");
+        int client_id = Integer.parseInt(client_string);
+        Date pY = Date.valueOf(productionYear);
+        Date nX = Date.valueOf(nextRepairDate);
 
         try {
-            int client_id = Integer.parseInt(client_string);
-            Date pY = Date.valueOf(productionYear);
-            Date nX = Date.valueOf(nextRepairDate);
+//            int client_id = Integer.parseInt(client_string);
+//            Date pY = Date.valueOf(productionYear);
+//            Date nX = Date.valueOf(nextRepairDate);
             VehiclesDao veh = new VehiclesDao(model, brand, pY, registrationNumber, nX, client_id);
                 veh.saveVeh();
             response.getWriter().append(brand + " " + model + " with registration number: " + registrationNumber + " added.");

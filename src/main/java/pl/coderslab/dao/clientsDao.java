@@ -5,6 +5,8 @@ import pl.coderslab.DbUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
+import pl.coderslab.dao.VehiclesDao;
+
 
 public class clientsDao extends Clients {
 
@@ -83,32 +85,7 @@ public class clientsDao extends Clients {
         return getClientsFromStatement(stmt);
     }
 
-//
-//    public static ArrayList<clientsDao> loadAllFromVehicles() throws SQLException {
-//        String sql = "SELECT * FROM clients";
-//        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
-//        return getClientsFromStatement(stmt);
-//    }
 
-    public static clientsDao searchByLastName(String lastName){
-        try{
-            String sql = "SELECT * FROM clients WHERE lastName=?";
-            PreparedStatement stat  = DbUtil.getConn().prepareStatement(sql);
-            stat.setString(1,lastName);
-            ResultSet rs = stat.executeQuery();
-            while (rs.next()){
-                clientsDao loadedClient = new clientsDao();
-                loadedClient.setId(rs.getInt("id"));
-                loadedClient.setName(rs.getString("name"));
-                loadedClient.setLastName(rs.getString("lastName"));
-                loadedClient.setBirthDate(rs.getDate("birthDate"));
-                return loadedClient;
-            }
-        }catch (SQLException e){
-            System.out.println("Error! Could not find a client with the following last name!");
-
-        }return null;
-    }
 
     private static ArrayList<clientsDao> getClientsFromStatement(PreparedStatement stmt) {
         try {
@@ -117,7 +94,6 @@ public class clientsDao extends Clients {
             while (resultSet.next()) {
                 clientsDao loadedClient = new clientsDao();
                 loadedClient.setId(resultSet.getInt("id"));
-
                 loadedClient.setName(resultSet.getString("name"));
                 loadedClient.setLastName(resultSet.getString("lastName"));
                 loadedClient.setBirthDate(resultSet.getDate("birthDate"));
@@ -149,6 +125,27 @@ public class clientsDao extends Clients {
         }
         return null;
     }
+
+    public static clientsDao searchByLastName(String lastName){
+        try{
+            String sql = "SELECT * FROM clients WHERE lastName=?";
+            PreparedStatement stat  = DbUtil.getConn().prepareStatement(sql);
+            stat.setString(1,lastName);
+            ResultSet rs = stat.executeQuery();
+            while (rs.next()){
+                clientsDao loadedClient = new clientsDao();
+                loadedClient.setId(rs.getInt("id"));
+                loadedClient.setName(rs.getString("name"));
+                loadedClient.setLastName(rs.getString("lastName"));
+                loadedClient.setBirthDate(rs.getDate("birthDate"));
+                return loadedClient;
+            }
+        }catch (SQLException e){
+            System.out.println("Error! Could not find a client with the following last name!");
+
+        }return null;
+    }
+
 
 
 }

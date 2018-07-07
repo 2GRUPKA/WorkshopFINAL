@@ -23,9 +23,7 @@ public class AddClient extends HttpServlet {
         try {
             clientsDao clientsDao = new clientsDao(name, lastName, birthDate);
             clientsDao.saveClients();
-            response.getWriter().append("Added new client " + name + " " + lastName);
-
-
+            response.sendRedirect("/clients/success.jsp?name="+name + lastName);
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().append("Cannot add a new client!");

@@ -18,9 +18,8 @@ public class VehiclesList extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<VehiclesDao> allVehicles;
         try {
-            allVehicles = VehiclesDao.loadAllVehs();
+            ArrayList<VehiclesDao> allVehicles = VehiclesDao.loadAllVehs();
             request.setAttribute("allVehicles", allVehicles);
         } catch (SQLException e){
             response.getWriter().append("sql problem");

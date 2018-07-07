@@ -18,8 +18,15 @@
     <ul>
         <c:forEach var="vehicles" items="${allVehicles}">
             <li>
+<<<<<<< HEAD
                 <h3><i>Id:</i> ${vehicles.getId} <i>Car:</i> ${vehicles.getBrand} ${vehicles.getModel} <i>Registration number:</i>
                         ${vehicles.getRegistrationNumber} <i>Car owner's id:</i> ${vehicles.getClient_id}</h3>
+=======
+                <h6>Id: ${vehicle.id},
+                    Car: ${vehicle.brand} ${vehicle.model},
+                    Registration number: ${vehicle.registrationNumber},
+                    Car owner's id: ${vehicle.client_id}</h6>
+>>>>>>> 4dc7ddbfe929044fbb60f9d6673f3a10b39e9e98
 
             </li>
         </c:forEach>

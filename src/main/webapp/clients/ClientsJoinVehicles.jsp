@@ -21,18 +21,12 @@
 
         <c:forEach var="orders" items="${list}">
             <li>
-                <h6>Orders Id: ${orders.getId()},
-                    acceptance: ${orders.getAcceptanceDate()},
-                    planning: ${orders.getPlanningStartDate()},
-                    start: ${orders.getStartRepair()},
-                    employee: ${orders.getEmployee_id()},
-                    problem: ${orders.getProblemDescription()},
-                    repair description: ${orders.getRepairDescription()},
-                    status: ${orders.getStatus()},
-                    vehicle: ${orders.getVehicle_id()},
-                    repair cost: ${orders.getRepairCost()},
-                    part cost: ${orders.getPartCost()},
-                    repair hours: ${orders.getRepairHours()}
+            <h6>Orders Id: ${orders.getId()},
+                    brand: ${orders.getBrand()},
+                    model: ${orders.getModel()},
+                    production year: ${orders.getProductionYear()},
+                    registration number: ${orders.getRegistrationNumber()},
+                    nextRepairDate: ${orders.getNextRepairDate()},
                 </h6>
             </li>
         </c:forEach>

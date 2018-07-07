@@ -15,23 +15,24 @@
 <body>
 
 <%@ include file="/fragments/header.jsp"  %>
-<%--<div> Type clients id to see its vehicles:--%>
-    <%--<form method="get", action="/employeeOrders"/>--%>
-    <%--<input type="number" name="id" required/>--%>
-    <%--<input type="submit" value="submit"/>--%>
-    <%--</form>--%>
-<%--</div>--%>
+
 <div>
     <ul>
 
-        <c:forEach var="vehicle" items="${allVehicles}">
+        <c:forEach var="orders" items="${list}">
             <li>
-                <h6>id: ${vehicle.id},
-                    brand: ${vehicle.brand},
-                    model: ${vehicle.model},
-                    productionYear: ${vehicle.productionYear},
-                    registrationNumber: ${vehicle.registrationNumber()},
-                    nextRepairDate: ${vehicle.nextRepairDate()},
+                <h6>Orders Id: ${orders.getId()},
+                    acceptance: ${orders.getAcceptanceDate()},
+                    planning: ${orders.getPlanningStartDate()},
+                    start: ${orders.getStartRepair()},
+                    employee: ${orders.getEmployee_id()},
+                    problem: ${orders.getProblemDescription()},
+                    repair description: ${orders.getRepairDescription()},
+                    status: ${orders.getStatus()},
+                    vehicle: ${orders.getVehicle_id()},
+                    repair cost: ${orders.getRepairCost()},
+                    part cost: ${orders.getPartCost()},
+                    repair hours: ${orders.getRepairHours()}
                 </h6>
             </li>
         </c:forEach>

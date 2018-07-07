@@ -13,18 +13,12 @@
 </head>
 <body>
 <%@ include file="/fragments/header.jsp"  %>
-<h3>Enter id of vehicle, to see all details.</h3>
-<div><form method="get" action="/VehicleDetailsById">
-    <input type="text" name="id" placeholder="Vehicles id">
-    <input type="submit" value="See details">
-</form>
 
-</div>
 <h3>Details of choosen vehicle:</h3>
 <h6>Car: ${veh.brand} ${veh.model},
     registration: ${veh.registrationNumber},
     production year: ${veh.productionYear},
-    next reapair date: ${veh.gextRepairDate}
+    next reapair date: ${veh.nextRepairDate}
     Car owner's id ${veh.client_id}
 </h6>
 <h3>Repairs:</h3>

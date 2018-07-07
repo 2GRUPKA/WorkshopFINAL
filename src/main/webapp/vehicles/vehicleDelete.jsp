@@ -18,7 +18,7 @@
     <input type='text' name='id' min=1 required/>
     <input type='submit' value='Delete.'/>
 </form>
-</div><h3>Vehicles list:</h3>
+<h3>Vehicles list:</h3>
 <div>
     <ul>
         <c:forEach var="vehicle" items="${allVehicles}">

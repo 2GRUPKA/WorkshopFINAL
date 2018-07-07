@@ -42,7 +42,14 @@ public class VehicleEdit extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String editstr = request.getParameter("id");
+        if (editstr!=null && !editstr.isEmpty()){
+            int editId = Integer.parseInt(editstr);
+            VehiclesDao loadedVeh = VehiclesDao.loadVehiclebyId(editId);
+            request.setAttribute("vehicle", loadedVeh);
+        }
         request.getRequestDispatcher("vehicles/vehicleEdit.jsp").forward(request, response);
 
     }
+
 }

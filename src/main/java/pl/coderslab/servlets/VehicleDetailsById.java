@@ -18,14 +18,16 @@ public class VehicleDetailsById extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idStr = request.getParameter("id");
+        String idStr = request.getParameter("showDetails");
         int id;
         try {
             id = Integer.parseInt(idStr);
-            VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
-            ArrayList<OrdersDao> vehiclesRepairs = VehiclesDao.loadVehicleRepairs(id);
-            request.setAttribute("reapirs", vehiclesRepairs);
-            request.setAttribute("veh", veh1);
+            if (id!=0) {
+                VehiclesDao veh1 = VehiclesDao.loadVehiclebyId(id);
+                ArrayList<OrdersDao> vehiclesRepairs = VehiclesDao.loadVehicleRepairs(id);
+                request.setAttribute("repairs", vehiclesRepairs);
+                request.setAttribute("veh", veh1);
+            }
         } catch (Exception e){
             e.printStackTrace();
         }

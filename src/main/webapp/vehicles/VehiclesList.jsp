@@ -13,17 +13,19 @@
 </head>
 <body>
 <%@ include file="/fragments/header.jsp"  %>
-</div><h3>Vehicles list:</h3>
+<h3>Vehicles list:</h3>
 <div>
     <ul>
         <c:forEach var="vehicle" items="${allVehicles}">
             <li>
-                <h6>Id: ${vehicle.id},
+                <h5>Id: ${vehicle.id},
                     Car: ${vehicle.brand} ${vehicle.model},
                     Registration number: ${vehicle.registrationNumber},
                     Car owner's id: ${vehicle.client_id}
-                    <a href="?delete=${vehicle.id}">Delete this vehicle.</a>
-                </h6>
+                    <a href="?delete=${vehicle.id}">Delete this vehicle.  </a>
+                    <a href="VehicleDetailsById?showDetails=${vehicle.id}">Show Details.  </a>
+                    <a href="VehicleEdit?id=${vehicle.id}">Edit.  </a>
+                </h5>
 
             </li>
         </c:forEach>

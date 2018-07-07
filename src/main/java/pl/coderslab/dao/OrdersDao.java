@@ -44,7 +44,7 @@ public class OrdersDao extends Orders {
         return getOrdersFromStatement(stmt);
     }
 
-    private static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
+    protected static ArrayList<OrdersDao> getOrdersFromStatement(PreparedStatement stmt) {
         try {
             ArrayList<OrdersDao> orderDao = new ArrayList<OrdersDao>();
             ResultSet resultSet = stmt.executeQuery();

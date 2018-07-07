@@ -14,13 +14,13 @@
 <%@ include file="/fragments/header.jsp"  %>
     <h2>Add new vehicle.</h2>
     <form method="post" action="">
-        <div><input type="text" name="brand"  required>Vehicle's brand</div>
-        <div><input type="text" name="model"  required>Vehicle's model</div>
-        <div><input type="date" name="productionYear"  required>Vehicle's year of production</div>
-        <div><input type="text" name="registrationNumber"  required>Vehicle's registration number</div>
-        <div><input type="date" name="nextRepairDate" >Vehicle's next visit date</div>
-        <div><input type="text" name="client_id" required>Owner's id</div>
-        <div><input type="submit" value="">Add this vehicle</div>
+        <div>Vehicle's brand: <br><input type="text" name="brand"  required></div>
+        <div>Vehicle's model: <br><input type="text" name="model"  required></div>
+        <div>Vehicle's year of production: <br><input type="date" name="productionYear"  required></div>
+        <div>Vehicle's registration number: <br><input type="text" name="registrationNumber"  required></div>
+        <div>Vehicle's next visit date: <br><input type="date" name="nextRepairDate" ></div>
+        <div>Owner's id: <br><input type="text" name="client_id" required></div>
+        <div><input type="submit" value="Add this vehicle"></div>
     </form>
 <%@ include file="/fragments/footer.jsp"  %>
 </body>

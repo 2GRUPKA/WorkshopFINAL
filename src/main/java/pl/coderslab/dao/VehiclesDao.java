@@ -1,13 +1,11 @@
 package pl.coderslab.dao;
 
 import pl.coderslab.Classes.Vehicles;
-//import pl.coderslab.DatabaseCon;
 import pl.coderslab.DbUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import pl.coderslab.DbUtil;
 
 public class VehiclesDao extends Vehicles {
 
@@ -28,9 +26,9 @@ public class VehiclesDao extends Vehicles {
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO vehicles (model,brand,productionYear,registrationNumber,nextRepairDate, client_id) VALUES (?,?,?,?,?,?)", generatedColumns);
                 stmt.setString(1, getModel());
                 stmt.setString(2, getBrand());
-                stmt.setDate(3, getProductionYear());
+                stmt.setDate(3, this.getProductionYear());
                 stmt.setString(4, getRegistrationNumber());
-                stmt.setDate(5, getNextRepairDate());
+                stmt.setDate(5, this.getNextRepairDate());
                 stmt.setInt(6, getClient_id());
                 stmt.executeUpdate();
                 ResultSet rs = stmt.getGeneratedKeys();
@@ -94,6 +92,13 @@ public class VehiclesDao extends Vehicles {
         }
     }
 
+    public static ArrayList<VehiclesDao>loadByClientId(int client_id)throws SQLException {
+        String sql = "SELECT * FROM vehicles WHERE client_id=?";
+        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+        stmt.setInt(1, client_id);
+        return getVehiclesFromStatement(stmt);
+    }
+
     public static VehiclesDao loadVehiclebyId(int id) {
         try {
             String sql = "SELECT * FROM vehicles WHERE id=?";
@@ -129,13 +134,14 @@ public class VehiclesDao extends Vehicles {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 VehiclesDao loadedVehicle = new VehiclesDao();
+
+                loadedVehicle.setId(rs.getInt("id"));
                 loadedVehicle.setModel(rs.getString("model"));
                 loadedVehicle.setBrand(rs.getString("brand"));
                 loadedVehicle.setProductionYear(rs.getDate("productionYear"));
                 loadedVehicle.setRegistrationNumber(rs.getString("registrationNumber"));
                 loadedVehicle.setNextRepairDate(rs.getDate("nextRepairDate"));
                 loadedVehicle.setClient_id(rs.getInt("client_id"));
-                loadedVehicle.setId(rs.getInt("id"));
                 vehicles.add(loadedVehicle);
             }
             return vehicles;

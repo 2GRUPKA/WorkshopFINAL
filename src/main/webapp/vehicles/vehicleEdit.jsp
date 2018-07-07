@@ -22,7 +22,7 @@
         <div><input type="date" name="nextRepairDate" placeholder="Vehicle's next visit date"></div>
         <div><input type="text" name="client_id" placeholder="Car owner's id"></div>
 
-        <div><input type="submit" value="Add the vehicle"></div>
+        <div><input type="submit" value="Confirm changes"></div>
     </form>
     <%@ include file="/fragments/footer.jsp"  %>
 

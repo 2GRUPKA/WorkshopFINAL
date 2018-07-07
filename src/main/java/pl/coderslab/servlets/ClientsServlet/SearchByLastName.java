@@ -1,5 +1,6 @@
 package pl.coderslab.servlets.ClientsServlet;
 
+import pl.coderslab.dao.OrdersDao;
 import pl.coderslab.dao.clientsDao;
 
 import javax.servlet.ServletException;
@@ -11,39 +12,37 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "SearchByLastName",urlPatterns = "/Search")
+
+@WebServlet(name = "SearchByLastName",urlPatterns = "/SearchByLastName")
 public class SearchByLastName extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         String lastName = request.getParameter("lastName");
-//        Scanner scan = new Scanner(System.in);
-
-        if (!lastName.isEmpty() && lastName != null) {
-            try {
-                clientsDao ClientsDao = new clientsDao(lastName);
-                ClientsDao = clientsDao.searchByLastName(lastName);
-//                ClientsDao.deleteFromClients();
-                response.sendRedirect("/clientsList.jsp?lastName="+lastName);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            response.getWriter().append("The last name you have entered does not exisit in our system ");
+        try {
+            clientsDao ClientsDao = new clientsDao();
+            clientsDao clients = clientsDao.searchByLastName(lastName);
+            request.setAttribute("clients",clients);
+            response.sendRedirect("");
+        }catch (Exception e){
+            response.getWriter().append("There's no data for such last name");
         }
+        request.getRequestDispatcher("/clients/show.jsp").forward(request,response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setContentType("text/html; charset=utf-8;");
+
         try {
-            ArrayList<clientsDao> searchClients = clientsDao.loadAll();
-            request.setAttribute("search",searchClients);
-        }catch (SQLException e){
+            ArrayList<clientsDao> list = clientsDao.loadAll();
+            request.setAttribute("list", list);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/clients/clientsList.jsp").forward(request,response);
+        request.getRequestDispatcher("/detailsorder.jsp").forward(request, response);
+
 
     }
+
 }

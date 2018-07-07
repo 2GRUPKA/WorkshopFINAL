@@ -55,6 +55,5 @@ public class EmployeeOrders extends HttpServlet {
         request.getRequestDispatcher("/employees/ordersEmp.jsp").forward(request, response);
 
 
-//        request.getRequestDispatcher("/employees/orders.jsp").forward(request, response);
     }
 }

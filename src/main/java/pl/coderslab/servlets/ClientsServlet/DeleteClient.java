@@ -30,7 +30,7 @@ public class DeleteClient extends HttpServlet {
                 ClientsDao = clientsDao.loadbyId(idInt);
                 ClientsDao.deleteFromClients();
                 request.setAttribute("id",idInt);
-                response.sendRedirect("/delete.jsp?id="+idInt);
+                response.sendRedirect("/clients/delete.jsp?id="+idInt);
 
             } catch (Exception e) {
                 e.printStackTrace();

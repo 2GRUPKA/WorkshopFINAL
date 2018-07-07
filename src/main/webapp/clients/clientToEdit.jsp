@@ -14,8 +14,8 @@
 <%@ include file="/fragments/header.jsp"  %>
 <h3> Form to edit clients</h3>
 
-<form action='' method='post' />
-<div><label>ID: <br><input type="number" name="id" min="0" required/> </label></div>
+<form action="" method="post" />
+<div><label>ID: <br><input type="number" name="id"  required/> </label></div>
 <div><label>Name: <br><input type='text' name='name' required /> </label></div>
 <div><label>Last Name: <br><input type='text' name='lastName' required /> </label></div>
 <div><label>Birth Date: <br><input type='date' name='birthDate' required /> </label></div>

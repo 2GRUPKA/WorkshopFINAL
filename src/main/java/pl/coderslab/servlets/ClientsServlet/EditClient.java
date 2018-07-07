@@ -25,15 +25,13 @@ public class EditClient extends HttpServlet {
         int id;
         try {
             id = Integer.parseInt(idStr);
+            clientsDao Client = clientsDao.loadbyId(id);
+            if (name!= null)Client.setName(name);
+            if (lastName!=null)Client.setLastName(lastName);
+            if (birthDate!=null)Client.setBirthDate(birthDate);
+            Client.editClients();
 
-            clientsDao ClientsDao = new clientsDao(name,lastName,birthDate);
-            ClientsDao.editClients();
-            request.setAttribute("id", id);
-            response.getWriter().append("You have successfully edited the client with id: " + id + name + lastName);
-
-            response.sendRedirect("/clients/clientToEdit.jsp?id=?"+id);
-//            ClientsDao.saveClients();
-//            response.getWriter().append("You have successfully edited the client with id: " + id + name + lastName);
+            response.sendRedirect("/clients/editedClient.jsp?id="+id);
 
         } catch (Exception e) {
             response.getWriter().append("Could not edit the client");

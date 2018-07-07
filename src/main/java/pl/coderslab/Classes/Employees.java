@@ -11,6 +11,12 @@ public class Employees {
         private int id;
         private String name;
         private String lastName;
+
+        public Employees(String name, String lastName) {
+                this.name = name;
+                this.lastName = lastName;
+        }
+
         private String address;
         private String phone;
         private String note;

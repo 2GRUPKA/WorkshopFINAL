@@ -1,6 +1,5 @@
 package pl.coderslab.servlets.ClientsServlet;
 
-import pl.coderslab.dao.OrdersDao;
 import pl.coderslab.dao.clientsDao;
 
 import javax.servlet.ServletException;
@@ -13,20 +12,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-@WebServlet(name = "SearchByLastName",urlPatterns = "/SearchByLastName")
+@WebServlet(name = "SearchByLastName", urlPatterns = "/SearchByLastName")
 public class SearchByLastName extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String lastName = request.getParameter("lastName");
         try {
             clientsDao ClientsDao = new clientsDao();
-            clientsDao clients = clientsDao.searchByLastName(lastName);
-            request.setAttribute("clients",clients);
-            response.sendRedirect("");
-        }catch (Exception e){
-            response.getWriter().append("There's no data for such last name");
+            ClientsDao = clientsDao.searchByLastName(lastName);
+            request.setAttribute("ClientsDao", ClientsDao);
+            request.getRequestDispatcher("/clients/show.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        request.getRequestDispatcher("/clients/show.jsp").forward(request,response);
 
     }
 
@@ -40,7 +37,7 @@ public class SearchByLastName extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/detailsorder.jsp").forward(request, response);
+        request.getRequestDispatcher("/clients/clientsByLastName.jsp").forward(request, response);
 
 
     }

@@ -124,6 +124,16 @@ public class EmployeesDao extends Employees {
         return null;
     }
 
+//    public static ArrayList<EmployeesDao> raport1() throws SQLException {
+//
+//        String sql = "    SELECT repairHours FROM orders LEFT  JOIN employees ON\n" +
+//                "    employees.id=orders.employee_id";
+//        PreparedStatement stmt = DbUtil.getConn().prepareStatement(sql);
+//        return getEmployeesFromStatement(stmt);
+//    }
+
+
+
     public void updateEmployee() {
 
         try{

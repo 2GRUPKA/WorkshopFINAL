@@ -15,10 +15,7 @@
 <body>
 <%@ include file="/fragments/header.jsp"  %>
 
-<form action="" method="post">
-    <input type="text" placeholder="Search by last name..." name="search">
-    <button type="submit">Submit</button>
-</form>
+
 
 <div>
     <ul>

@@ -14,6 +14,10 @@ public class VehiclesDao extends Vehicles {
         super(model, brand, productionYear, registrationNumber, nextRepairDate, client_id);
     }
 
+    public VehiclesDao(int id, String brand,String model,String productionYear,String registrationNumber,Date nextRepairDate,int client_id){
+        super();
+    }
+
     public VehiclesDao() {
         super();
     }
